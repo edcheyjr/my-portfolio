@@ -2,25 +2,30 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Header from '../components/Header'
+import Hero from '../components/Hero'
+
+// possible text color text-[rgb(128,128,128)]
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div className='z-0 bg-[rgb(36,36,36)] text-zinc-300 h-screen snap-y snap-mandatory overflow-scroll'>
       <Head>
         <title>Welcome to Ed&apos;s World</title>
         <meta
           name='decription'
-          content='Edwin is a software engineer come and see his works'
+          content='Edwin is a software engineer come and see his work'
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div className='container mx-auto px-4 lg:px-6 py-4'>
+      <div className='container mx-auto px-4 py-4 max-w-7xl'>
         {/* Header */}
         <Header />
 
         {/* Hero */}
-
+        <section id='hero' className='snap-center'>
+          <Hero />
+        </section>
         {/* About */}
 
         {/* Experience */}

@@ -15,3 +15,10 @@ body {
     Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
     Helvetica Neue, sans-serif;
 }
+
+@layer components {
+  /* custom heros buttons  */
+  .heroButton {
+    @apply px-6 border border-[#242424] rounded-full uppercase text-sm transition;
+  }
+}
