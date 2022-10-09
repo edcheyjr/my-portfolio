@@ -3,6 +3,7 @@ import { Cursor, useTypewriter } from 'react-simple-typewriter'
 import BackgroundCircles from './BackgroundCircles'
 import Image from 'next/image'
 import ImageSrc from '../public/image.jpg'
+import Link from 'next/link'
 
 type Props = {}
 export default function Hero({}: Props) {
@@ -29,20 +30,31 @@ export default function Hero({}: Props) {
         width={128}
       />
 
-      <div className='space-y-2'>
-        <h2 className='text-sm uppercase text-gray-500 font-medium  tracking-[12px]'>
+      <div className='space-y-2 relative'>
+        <h2 className='text-sm uppercase text-gray-500 font-medium  tracking-[15px]'>
           software engineer
         </h2>
-        <h1 className='text-4xl lg:text-5xl xl:text-6xl text-transparent font-semibold leading-tight  bg-clip-text bg-gradient-to-r from-[#f7abba]/70 via-gray-100 to-[#f7abba]/70'>
+        <h1 className='text-4xl lg:text-5xl xl:text-6xl text-transparent font-semibold leading-loose bg-clip-text bg-gradient-to-r from-[#f7abba]/70 via-gray-100 to-[#f7abba]/70'>
           <span className='mr-3'>{text}</span>
           <Cursor cursorColor='#F7ABBA' />
         </h1>
         <div>
-          <button className='heroButton'>About</button>
-          <button className='heroButton'>Skills</button>
-          <button className='heroButton'>Experiences</button>
-          <button className='heroButton'>Projects</button>
-          <button className='heroButton'>Contact</button>
+          <Link href={'#about'}>
+            <button className='heroButton'>About</button>
+          </Link>
+
+          <Link href={'#experience'}>
+            <button className='heroButton'>Experiences</button>
+          </Link>
+          <Link href={'#skills'}>
+            <button className='heroButton'>Skills</button>
+          </Link>
+          <Link href={'#projects'}>
+            <button className='heroButton'>Projects</button>
+          </Link>
+          <Link href={'#contact'}>
+            <button className='heroButton'>Contact</button>
+          </Link>
         </div>
       </div>
     </div>

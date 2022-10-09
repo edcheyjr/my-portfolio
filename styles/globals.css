@@ -19,6 +19,7 @@ body {
 @layer components {
   /* custom heros buttons  */
   .heroButton {
-    @apply px-6 border border-[#242424] rounded-full uppercase text-sm transition;
+    @apply cursor-pointer px-6 py-2 border-t border-l-2 border-b-[4px] border-r-2 border-[#242424] rounded-full uppercase tracking-widest text-xs transition-all hover:border-primary/40 
+    hover:text-primary/60;
   }
 }

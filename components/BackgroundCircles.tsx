@@ -26,7 +26,7 @@ const BackgroundCircles = (props: Props) => {
       <div className='absolute border border-[#333333] rounded-full w-[300px] h-[300px]' />
 
       {/* Circle 3*/}
-      <div className='absolute border border-[#333333] rounded-full w-[500px] h-[500px]' />
+      <div className='absolute border border-[#333333] rounded-full w-[500px] h-[500px] opacity-50' />
 
       {/* Circle 4*/}
       <div className='absolute border border-[#f796d6]  opacity-20 transition duration-200 group-hover:opacity-40 rounded-full w-[650px] h-[650px] animate-pulse' />
