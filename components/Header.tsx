@@ -14,7 +14,7 @@ const SocialMedia = [
 
 export default function Header({}: Props) {
   return (
-    <header className='flex justify-between py-2 sticky top-0 items-start z-20 '>
+    <header className='flex justify-between py-2 sticky top-0 items-start z-20 max-w-7xl mx-auto px-10 '>
       <motion.div
         initial={{ x: -500, opacity: 0, scale: 0.5 }}
         animate={{ x: 0, opacity: 1, scale: 1 }}
