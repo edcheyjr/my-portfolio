@@ -15,7 +15,7 @@ import Contact from '../components/Contact'
 
 const Home: NextPage = () => {
   return (
-    <div className='z-0 bg-[rgb(36,36,36)] text-zinc-300 h-screen snap-y snap-mandatory overflow-scroll scroll-smooth transition-all delay-300'>
+    <div className='z-0 bg-[rgb(36,36,36)] text-zinc-300 h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth transition-all delay-300 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-primary '>
       <Head>
         <title>Welcome to Ed&apos;s World</title>
         <meta

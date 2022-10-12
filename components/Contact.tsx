@@ -1,19 +1,29 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import SectionTitle from './SectionTitle'
 import { useForm, SubmitHandler, Resolver } from 'react-hook-form'
+import emailjs from '@emailjs/browser'
 import {
   PhoneIcon,
   MapPinIcon,
   EnvelopeIcon,
 } from '@heroicons/react/24/outline'
-import { SubmitErrorHandler } from 'react-hook-form/dist/types'
 
+const currentEmail = 'edwin.kibet@neurallabs.africa'
+const currentName = 'edwin chebii'
 // prop types
 type Props = {}
 
 type Inputs = {
   name: string
   email: string
+  subject: string
+  message: string
+}
+type EmailTemplate = {
+  from_email: string
+  from_name: string
+  to_email: string
+  to_name: string
   subject: string
   message: string
 }
@@ -64,13 +74,36 @@ function Contact({}: Props) {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     // send to my email through email server
+    const templateEmailParam: EmailTemplate = {
+      from_email: data.email,
+      from_name: data.name,
+      to_email: currentEmail,
+      to_name: currentName,
+      subject: data.subject,
+      message: data.message,
+    }
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+        templateEmailParam,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        (result: any) => {
+          console.log(result)
+        },
+        (error: any) => {
+          console.log(error.text)
+        }
+      )
     // send a success messaage back should be a modal thank you for contacting.I will get back to you through your email, looking forward to knowing and interacting with you
   }
   console.log(errors)
   return (
-    <div className='relative flex flex-col text-center md:text-left xl:flex-row max-w-7xl xl:px-10 min-h-screen justify-center mx-auto items-center'>
+    <div className='relative flex flex-col text-center md:text-left xl:flex-row max-w-7xl xl:px-10  min-h-screen justify-center mx-auto items-center'>
       <SectionTitle>contact me</SectionTitle>
-      <div className='flex flex-col space-y-10'>
+      <div className='flex flex-col space-y-10 pt-20'>
         <h4 className='text-2xl md:text-4xl text-bold text-center first-letter:capitalize'>
           i got what you need{' '}
           <span className='underline decoration-primary/50 underline-offset-4'>
@@ -80,7 +113,7 @@ function Contact({}: Props) {
         <div className='flex flex-col space-y-6'>
           <div className='flex items-center justify-center space-x-3'>
             <EnvelopeIcon className='text-primary animate-pulse w-7 h-7' />
-            <p className='text-2xl font-light'>edwin.kibet@neurallabs.africa</p>
+            <p className='text-2xl font-light'>{currentEmail}</p>
           </div>
           <div className='flex items-center justify-center space-x-3'>
             <PhoneIcon className='text-primary animate-pulse w-7 h-7' />

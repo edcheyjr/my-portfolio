@@ -10,7 +10,7 @@ const WorkExperience = (props: Props) => {
     <motion.div className='h-screen flex relative overflow-hidden flex-col text-left md:flex-row max-w-7xl justify-evenly mx-auto items-center px-10'>
       <SectionTitle> Experience</SectionTitle>
 
-      <div className='w-full flex space-x-3 pt-20 px-10 pb-10 overflow-x-scroll snap-x snap-mandatory touch-auto scroll-smooth'>
+      <div className='relative w-full flex space-x-3 px-10 pb-10 overflow-x-scroll snap-x snap-mandatory  scroll-smooth  scrollbar-track-gray-400/20 scrollbar-thumb-primary scrollbar'>
         {/* ExperienceCard */}
         <ExperienceCard />
         <ExperienceCard />
