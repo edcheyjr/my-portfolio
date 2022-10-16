@@ -10,6 +10,8 @@ import WorkExperience from '../components/WorkExperience'
 import Skills from '../components/Skills'
 import Projects from '../components/Projects'
 import Contact from '../components/Contact'
+import Link from 'next/link'
+import ImageSrc from '../public/image.jpg'
 
 // possible text color text-[rgb(128,128,128)]
 
@@ -24,7 +26,7 @@ const Home: NextPage = () => {
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <div className='mx-auto py-4 '>
+      <div className='mx-auto py-4'>
         <Header />
 
         <section id='hero' className='snap-center'>
@@ -50,6 +52,22 @@ const Home: NextPage = () => {
         <section id='contact' className='snap-start'>
           <Contact />
         </section>
+        <Link href={'#hero'}>
+          <footer className='sticky z-50 bottom-5 w-full cursor-pointer flex justify-center'>
+            <div
+              title='go back to top'
+              className='relative h-10 w-10 rounded-full grayscale hover:grayscale-0 shadow-md hover:shadow hover:animate-bounce'
+            >
+              <Image
+                src={ImageSrc}
+                alt='go back to top image button'
+                layout='fill'
+                objectFit='cover'
+                className='rounded-full'
+              />
+            </div>
+          </footer>
+        </Link>
       </div>
     </div>
   )
