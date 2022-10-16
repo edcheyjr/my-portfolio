@@ -21,11 +21,11 @@ export default function Hero({}: Props) {
       <BackgroundCircles />
 
       <Image
-        className='rounded-full h-32 w-32 mx-auto  object-cover '
+        className='rounded-full h-32 w-32 mx-auto object-cover'
         src={ImageSrc}
         alt='Edwin'
         objectFit='cover'
-        loading='lazy'
+        loading='eager'
         height={128}
         width={128}
       />
