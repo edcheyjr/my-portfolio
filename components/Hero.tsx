@@ -4,13 +4,20 @@ import BackgroundCircles from './BackgroundCircles'
 import Image from 'next/image'
 import ImageSrc from '../public/image.jpg'
 import Link from 'next/link'
+import { PageInfo } from '../typings'
+import { urlFor } from '../lib/sanity'
 
-type Props = {}
-export default function Hero({}: Props) {
+type Props = {
+  pageInfo: PageInfo
+}
+
+// create array of words to pass in typewriter
+export default function Hero({ pageInfo }: Props) {
   const [text, count] = useTypewriter({
     words: [
-      "Hi, The Name's Edwin Chebii",
-      'Guy-Who-Loves-Gaming.tsx',
+      'Como estás',
+      `The Name's ${pageInfo?.name}`,
+      'Guy-Who-Loves-Spanish.tsx',
       '<ButLovesCodingMore/>',
     ],
     loop: true,
@@ -22,8 +29,8 @@ export default function Hero({}: Props) {
 
       <Image
         className='rounded-full h-32 w-32 mx-auto object-cover'
-        src={ImageSrc}
-        alt='Edwin'
+        src={urlFor(pageInfo.profilePic).url() || ImageSrc}
+        alt={pageInfo.name || 'noImage'}
         objectFit='cover'
         loading='eager'
         height={128}
@@ -31,14 +38,14 @@ export default function Hero({}: Props) {
       />
 
       <div className='space-y-2 relative'>
-        <h2 className='text-sm uppercase text-gray-500 font-medium  tracking-[15px]'>
-          software engineer
+        <h2 className='text-xs md:text-sm uppercase text-gray-500 font-medium  tracking-[5px] lg:tracking-[15px]'>
+          {pageInfo?.role}
         </h2>
-        <h1 className='text-4xl lg:text-5xl xl:text-6xl text-transparent font-semibold leading-loose bg-clip-text bg-gradient-to-r from-[#f7abba]/70 via-gray-100 to-[#f7abba]/70'>
-          <span className='mr-3'>{text}</span>
+        <h1 className='text-2xl md:text-4xl lg:text-5xl py-2 align-middle xl:text-6xl text-transparent font-semibold leading-loose bg-clip-text bg-gradient-to-r from-[#f7abba]/70 via-gray-100 to-[#f7abba]/70'>
+          <span className='mr-3 py-2'>{text}</span>
           <Cursor cursorColor='#F7ABBA' />
         </h1>
-        <div>
+        <div className='grid grid-cols-2 sm:grid-cols-5 '>
           <Link href={'#about'}>
             <button className='heroButton'>About</button>
           </Link>
