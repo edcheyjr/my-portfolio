@@ -1,17 +1,20 @@
 import React, { useRef } from 'react'
 import SectionTitle from './SectionTitle'
-import { useForm, SubmitHandler, Resolver } from 'react-hook-form'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 import {
   PhoneIcon,
   MapPinIcon,
   EnvelopeIcon,
 } from '@heroicons/react/24/outline'
+import { PageInfo } from '../typings'
 
 const currentEmail = 'edwin.kibet@neurallabs.africa'
 const currentName = 'edwin chebii'
 // prop types
-type Props = {}
+type Props = {
+  pageInfo: PageInfo
+}
 
 type Inputs = {
   name: string
@@ -28,57 +31,21 @@ type EmailTemplate = {
   message: string
 }
 
-const resolver: Resolver<Inputs> = async (values: Inputs) => {
-  return {
-    values: values ? values : {},
-    errors: !values.name
-      ? {
-          name: {
-            type: 'required',
-            message: 'please let me know you.😉',
-          },
-        }
-      : !values.email
-      ? {
-          email: {
-            type: 'required',
-            message: 'your email is required',
-          },
-        }
-      : !values.subject
-      ? {
-          subject: {
-            type: 'required',
-            message: 'Write a subject please',
-          },
-        }
-      : !values.message
-      ? {
-          message: {
-            types: {
-              required: true,
-            },
-            message: 'say a word or two atleast 😁',
-          },
-        }
-      : {},
-  }
-}
-function Contact({}: Props) {
+function Contact({ pageInfo }: Props) {
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Inputs>({ resolver })
+  } = useForm<Inputs>()
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     // send to my email through email server
     const templateEmailParam: EmailTemplate = {
       from_email: data.email,
       from_name: data.name,
-      to_email: currentEmail,
-      to_name: currentName,
+      to_email: pageInfo?.email || currentEmail,
+      to_name: pageInfo?.name || currentName,
       subject: data.subject,
       message: data.message,
     }
@@ -101,11 +68,11 @@ function Contact({}: Props) {
   }
   console.log(errors)
   return (
-    <div className='relative flex flex-col text-center md:text-left xl:flex-row max-w-7xl xl:px-10  min-h-screen justify-center mx-auto items-center'>
+    <div className='relative flex flex-col text-center md:text-left xl:flex-row max-w-7xl px-10  min-h-screen w-screen justify-center mx-auto items-center'>
       <SectionTitle>contact me</SectionTitle>
-      <div className='flex flex-col space-y-10 pt-20'>
-        <h4 className='text-2xl md:text-4xl text-bold text-center first-letter:capitalize'>
-          i got what you need{' '}
+      <div className='flex flex-col space-y-5 xl:space-y-10 pt-24'>
+        <h4 className='text-xl lg:text-2xl xl:text-4xl text-bold text-center first-letter:capitalize'>
+          got what you need ?{' '}
           <span className='underline decoration-primary/50 underline-offset-4'>
             let&#39;s talk
           </span>
@@ -113,20 +80,26 @@ function Contact({}: Props) {
         <div className='flex flex-col space-y-6'>
           <div className='flex items-center justify-center space-x-3'>
             <EnvelopeIcon className='text-primary animate-pulse w-7 h-7' />
-            <p className='text-2xl font-light'>{currentEmail}</p>
+            <p className='text-lg lg:text-2xl font-light'>
+              {pageInfo?.email || currentEmail}
+            </p>
           </div>
           <div className='flex items-center justify-center space-x-3'>
             <PhoneIcon className='text-primary animate-pulse w-7 h-7' />
-            <p className='text-2xl font-light'>+254701200709</p>
+            <p className='text-lg lg:text-2xl font-light'>
+              {pageInfo?.phoneNumber}
+            </p>
           </div>
           <div className='flex items-center justify-center space-x-3'>
             <MapPinIcon className='text-primary animate-pulse w-7 h-7' />
-            <p className='text-2xl font-light'>Nairobi,west park towers</p>
+            <p className='text-lg lg:text-2xl font-light'>
+              {pageInfo?.address || 'west park towers Nairobi, Kenya'}
+            </p>
           </div>
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className='flex flex-col w-fit space-y-3 mx-auto'
+          className='flex flex-col w-fit space-y-3 mx-auto py-5'
         >
           {errors.name?.message ||
           errors.message?.message ||
@@ -141,30 +114,38 @@ function Contact({}: Props) {
           ) : (
             ''
           )}
-          <div className='space-x-3'>
+          <div className='flex flex-wrap w-full gap-3'>
             <input
               type='text'
-              {...register('name')}
-              className='contactInput'
+              {...register('name', { required: 'please let me know you.😉' })}
+              className='contactInput w-full md:w-auto'
               placeholder='name'
             />
             <input
               type='email'
-              {...register('email')}
-              className='contactInput'
+              {...register('email', {
+                required: 'your email is required',
+                pattern: {
+                  value: /^\S+@\S+$/i,
+                  message: 'incorrect email, check your email format',
+                },
+              })}
+              className='contactInput w-full md:w-auto'
               placeholder='email'
             />
           </div>
           <input
             type='text'
-            {...register('subject')}
+            {...register('subject', { required: 'Write a subject please' })}
             className='contactInput'
             placeholder='subject'
           />
           <textarea
             className='contactInput'
             placeholder='message'
-            {...register('message')}
+            {...register('message', {
+              required: 'say a word or two atleast 😁',
+            })}
           />
           <button
             type='submit'
