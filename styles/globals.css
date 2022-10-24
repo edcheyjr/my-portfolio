@@ -26,3 +26,8 @@ body {
     @apply outline-none rounded bg-slate-400/10 border-b-[3px] border-[#242424] focus:border-primary/40 px-6 py-4 text-gray-400 focus:text-primary placeholder-gray-500 transition-all;
   }
 }
+
+/* swiper slide */
+.swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #f7abba;
+}
