@@ -3,47 +3,23 @@ import { motion } from 'framer-motion'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Scrollbar } from 'swiper'
+import { Scrollbar, Pagination } from 'swiper'
 
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/scrollbar'
+import 'swiper/css/pagination'
+
 import SectionTitle from './SectionTitle'
+import { Project } from '../typings'
+import { urlFor } from '../lib/sanity'
+import Technology from './Technology'
 
-const MyProjects = [
-  {
-    no: 1,
-    title: 'Ehouse app',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id rerum blanditiis, quis ducimus ratione odit nesciunt nam alias voluptatem cupiditate, autem molestias distinctio esse at, harum culpa quod earum minus.',
-    imageSrc:
-      'https://github.com/edcheyjr/movieapp/raw/master/public/img/search.png',
-  },
-  {
-    no: 2,
-    title: 'Skin Dianostic System',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id rerum blanditiis, quis ducimus ratione odit nesciunt nam alias voluptatem cupiditate, autem molestias distinctio esse at, harum culpa quod earum minus.',
-    imageSrc:
-      'https://github.com/edcheyjr/skin-cancer-diagnostic-system-frontend-/raw/master/readme/patient-records-page.png',
-  },
-  {
-    no: 3,
-    title: 'Instagram Clone',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id rerum blanditiis, quis ducimus ratione odit nesciunt nam alias voluptatem cupiditate, autem molestias distinctio esse at, harum culpa quod earum minus.',
-    imageSrc:
-      'https://github.com/edcheyjr/instaclone/blob/main/public/img/dashboard1.png',
-  },
-  {
-    no: 4,
-    title: 'Background Generator',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id rerum blanditiis, quis ducimus ratione odit nesciunt nam alias voluptatem cupiditate, autem molestias distinctio esse at, harum culpa quod earum minus.',
-    imageSrc:
-      'https://github.com/edcheyjr/skin-cancer-diagnostic-system-frontend-/raw/master/readme/patient-records-page.png',
-  },
-]
+type Props = {
+  projects: Project[]
+}
 
-type Props = {}
-
-function Projects({}: Props) {
+function Projects({ projects }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -53,37 +29,49 @@ function Projects({}: Props) {
     >
       <SectionTitle>projects</SectionTitle>
       <Swiper
+        style={{ paddingTop: '2rem', paddingBottom: '2rem' }}
         scrollbar={{
           hide: true,
+          snapOnRelease: true,
+          // draggable: true,
         }}
-        modules={[Scrollbar]}
+        centeredSlides={true}
+        pagination={{
+          dynamicBullets: true,
+        }}
+        modules={[Scrollbar, Pagination]}
         className='mySwiper relative w-full px-10 py-5 justify-center items-center flex flex-col z-20'
       >
-        {MyProjects.map((project) => (
+        {projects.map((project, key) => (
           <SwiperSlide
-            key={project.no}
+            key={project?._id}
             className='w-screen flex flex-col px-5 pt-20 md:p-20 lg:p-56 h-screen'
           >
-            <div
-              key={project.no}
-              className='justify-center text-left space-y-5 '
-            >
+            <div key={key + 1} className='justify-center text-left space-y-5 '>
               <motion.img
                 initial={{ y: -100, opacity: 0 }}
                 transition={{ duration: 1.2 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                src={project.imageSrc}
-                alt={project.title}
+                src={urlFor(project?.image).url()}
+                alt={project?.title}
                 className='w-64 xl:w-72 h-auto mx-auto border-2 rounded-lg border-gray-500 mb-5'
               />
+              <div className='flex w-full justify-center space-x-2 my-2'>
+                {project.technologies.map((tech) => (
+                  <Technology key={tech?._id} tech={tech} />
+                ))}
+              </div>
               <div>
-                <h3 className='font-sembold text-center text-4xl mb-5'>
-                  <span className='underline decoration-primary underline-offset-4'>{`Project ${project.no} of ${MyProjects.length}:`}</span>{' '}
-                  {project.title}
+                <h3 className='font-sembold text-center text-2xl lg:text-4xl mb-5'>
+                  <span className='underline decoration-primary underline-offset-4'>{`Project ${
+                    key + 1
+                  } of ${projects.length}:`}</span>{' '}
+                  {project?.title}
                 </h3>
-                <p className='text-lg text-center md:text-left'>
-                  {project.desc}
+
+                <p className='text-sm lg:text-lg text-center md:text-left'>
+                  {project?.summary}
                 </p>
               </div>
             </div>
@@ -92,7 +80,9 @@ function Projects({}: Props) {
       </Swiper>
 
       {/* </div> */}
-      <div className='absolute w-full top-[30%] bg-primary/10 left-0 h-[500px] -skew-y-12'></div>
+      <div className='absolute w-full top-[30%] bg-primary/10 left-0 h-[500px] -skew-y-12'>
+        {/* slant background */}
+      </div>
     </motion.div>
   )
 }
