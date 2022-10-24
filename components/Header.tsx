@@ -2,18 +2,21 @@ import React from 'react'
 import { SocialIcon } from 'react-social-icons'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { Social } from '../typings'
 
-type Props = {}
+type Props = {
+  socials: Social[]
+}
 
-const SocialMedia = [
-  'https://www.youtube.com/watch?v=urgi2iz9P6U&t=1759s',
-  'https://github.com/edcheyjr/my-portfolio',
-  'https://www.linkedin.com/in/edwin-chebii-b18686209/',
-  'http://www.twitter.com/edchey1',
-  'https://www.instagram.com/e.d.c.h.e.y_jr/?hl=en',
-]
+// const SocialMedia = [
+//   'https://www.youtube.com/watch?v=urgi2iz9P6U&t=1759s',
+//   'https://github.com/edcheyjr/my-portfolio',
+//   'https://www.linkedin.com/in/edwin-chebii-b18686209/',
+//   'http://www.twitter.com/edchey1',
+//   'https://www.instagram.com/e.d.c.h.e.y_jr/?hl=en',
+// ]
 
-export default function Header({}: Props) {
+export default function Header({ socials }: Props) {
   const [isHovered, setIsHovered] = React.useState(false)
   return (
     <header className='flex justify-between py-2 sticky top-0 items-start z-20 max-w-7xl mx-auto px-10 '>
@@ -21,14 +24,14 @@ export default function Header({}: Props) {
         initial={{ x: -500, opacity: 0, scale: 0.5 }}
         animate={{ x: 0, opacity: 1, scale: 1 }}
         transition={{ type: 'spring', stiffness: 90, duration: 1.2 }}
-        className='flex '
+        className='flex'
       >
         {/* Social Icons */}
-        {SocialMedia.map((social, key) => (
+        {socials.map((social, key) => (
           <SocialIcon
             className='cursor-pointer'
-            key={key}
-            url={social}
+            key={social._id}
+            url={social.url}
             bgColor='transparent'
             fgColor='rgb(107 114 128)'
           />
