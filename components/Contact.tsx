@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import { useState } from 'react'
 import SectionTitle from './SectionTitle'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
@@ -8,6 +8,7 @@ import {
   EnvelopeIcon,
 } from '@heroicons/react/24/outline'
 import { PageInfo } from '../typings'
+import Modal from './Modal'
 
 const currentEmail = 'edwin.kibet@neurallabs.africa'
 const currentName = 'edwin chebii'
@@ -32,6 +33,10 @@ type EmailTemplate = {
 }
 
 function Contact({ pageInfo }: Props) {
+  const [showModal, setShowModal] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState<string>('')
+
   const {
     register,
     handleSubmit,
@@ -58,10 +63,16 @@ function Contact({ pageInfo }: Props) {
       )
       .then(
         (result: any) => {
+          setIsSubmitting(true)
           console.log(result)
+          if (result?.status == 200) {
+            setShowModal(true)
+            setIsSubmitting(false)
+          }
         },
         (error: any) => {
-          console.log(error.text)
+          setError(error?.text)
+          setIsSubmitting(false)
         }
       )
     // send a success messaage back should be a modal thank you for contacting.I will get back to you through your email, looking forward to knowing and interacting with you
@@ -70,8 +81,8 @@ function Contact({ pageInfo }: Props) {
   return (
     <div className='relative flex flex-col text-center md:text-left xl:flex-row max-w-7xl px-10  min-h-screen w-screen justify-center mx-auto items-center'>
       <SectionTitle>contact me</SectionTitle>
-      <div className='flex flex-col space-y-5 xl:space-y-10 pt-24'>
-        <h4 className='text-xl lg:text-2xl xl:text-4xl text-bold text-center first-letter:capitalize'>
+      <div className='flex flex-col space-y-4 xl:space-y-10 pt-24'>
+        <h4 className='text-xl lg:text-2xl xl:text-3xl text-bold text-center first-letter:capitalize'>
           got what you need ?{' '}
           <span className='underline decoration-primary/50 underline-offset-4'>
             let&#39;s talk
@@ -104,12 +115,14 @@ function Contact({ pageInfo }: Props) {
           {errors.name?.message ||
           errors.message?.message ||
           errors.email?.message ||
-          errors.subject?.message ? (
+          errors.subject?.message ||
+          error ? (
             <div className='w-auto py-3 px-6 text-red-500 bg-red-400/20 font-semibold text-sm md:text-base rounded-lg space-y-2'>
               {errors.name?.message ||
                 errors.message?.message ||
                 errors.subject?.message ||
-                errors.email?.message}
+                errors.email?.message ||
+                error}
             </div>
           ) : (
             ''
@@ -151,8 +164,15 @@ function Contact({ pageInfo }: Props) {
             type='submit'
             className='bg-primary/90 py-4 px-10 rounded-md text-gray-800 font-bold hover:bg-primary transition duration-200 ease-in-out'
           >
-            submit
+            {isSubmitting ? 'submitting...' : 'submit'}
           </button>
+
+          <Modal
+            showModal={showModal}
+            setShowModal={setShowModal}
+            title={'Successful delivered'}
+            info={'Thank you for your feedback!, I will get back to you soon.'}
+          />
         </form>
       </div>
     </div>
