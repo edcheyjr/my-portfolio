@@ -85,8 +85,8 @@ const Home = ({ pageInfo, skills, experience, projects, socials }: Props) => {
           <Contact pageInfo={pageInfo} />
         </section>
 
-        <Link href={'#hero'}>
-          <footer className='hidden lg:flex sticky z-50 bottom-5 w-full cursor-pointer justify-center'>
+        <footer className='hidden lg:flex sticky z-50 bottom-5 w-full cursor-pointer justify-center'>
+          <Link href={'#hero'}>
             <div
               title='go back to top'
               className='flex before:relative h-10 w-10 rounded-full grayscale hover:grayscale-0 shadow-md hover:shadow hover:animate-bounce'
@@ -99,8 +99,8 @@ const Home = ({ pageInfo, skills, experience, projects, socials }: Props) => {
                 className='rounded-full '
               />
             </div>
-          </footer>
-        </Link>
+          </Link>
+        </footer>
       </div>
     </div>
   )
