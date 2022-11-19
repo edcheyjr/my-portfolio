@@ -8,14 +8,6 @@ type Props = {
   socials: Social[]
 }
 
-// const SocialMedia = [
-//   'https://www.youtube.com/watch?v=urgi2iz9P6U&t=1759s',
-//   'https://github.com/edcheyjr/my-portfolio',
-//   'https://www.linkedin.com/in/edwin-chebii-b18686209/',
-//   'http://www.twitter.com/edchey1',
-//   'https://www.instagram.com/e.d.c.h.e.y_jr/?hl=en',
-// ]
-
 export default function Header({ socials }: Props) {
   const [isHovered, setIsHovered] = React.useState(false)
   return (
