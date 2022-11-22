@@ -13,7 +13,7 @@ function Skill({ directionLeft, skill }: Props) {
   return (
     <motion.div
       initial={{
-        x: directionLeft ? -200 : 200,
+        x: directionLeft ? -150 : 150,
         opacity: 0,
       }}
       transition={{ duration: 1 }}
