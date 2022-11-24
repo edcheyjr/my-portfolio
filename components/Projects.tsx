@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Scrollbar, Pagination } from 'swiper'
+import { Scrollbar, Pagination, Autoplay } from 'swiper'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -35,11 +35,23 @@ function Projects({ projects }: Props) {
           snapOnRelease: true,
           // draggable: true,
         }}
+        speed={1000}
+        // direction='horizontal'
+        loop={true}
+        mousewheel={{
+          invert: true,
+        }}
+        keyboard={{ enabled: true, onlyInViewport: false }}
+        autoplay={{
+          delay: 3000,
+          // pauseOnMouseEnter: true,
+          disableOnInteraction: false,
+        }}
         centeredSlides={true}
         pagination={{
           dynamicBullets: true,
         }}
-        modules={[Scrollbar, Pagination]}
+        modules={[Scrollbar, Pagination, Autoplay]}
         className='mySwiper relative w-full px-10 py-5 justify-center items-center flex flex-col z-20'
       >
         {projects.map((project, key) => (
