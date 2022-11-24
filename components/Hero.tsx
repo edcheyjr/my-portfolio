@@ -29,7 +29,7 @@ export default function Hero({ pageInfo }: Props) {
 
       <Image
         className='rounded-full h-32 w-32 mx-auto object-cover'
-        src={urlFor(pageInfo.profilePic).url() || ImageSrc}
+        src={pageInfo.profilePic ? urlFor(pageInfo.profilePic).url() : ImageSrc}
         alt={pageInfo.name || 'noImage'}
         objectFit='cover'
         loading='eager'

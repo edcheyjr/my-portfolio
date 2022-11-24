@@ -5,7 +5,7 @@ import { urlFor } from '../lib/sanity'
 import Image from 'next/image'
 
 type Props = {
-  directionLeft?: boolean
+  directionLeft: boolean
   skill: Skill
 }
 

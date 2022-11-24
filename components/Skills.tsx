@@ -25,7 +25,7 @@ function Skills({ skills }: Props) {
           <Skill key={skill._id} skill={skill} directionLeft />
         ))}
         {skills.slice(skills.length * 0.5, skills.length).map((skill) => (
-          <Skill key={skill._id} skill={skill} />
+          <Skill directionLeft={false} key={skill._id} skill={skill} />
         ))}
       </div>
     </motion.div>

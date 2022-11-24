@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-
+import Link from 'next/link'
 // components
 import Header from '../components/Header'
 import Hero from '../components/Hero'
@@ -10,7 +10,7 @@ import WorkExperience from '../components/WorkExperience'
 import Skills from '../components/Skills'
 import Projects from '../components/Projects'
 import Contact from '../components/Contact'
-import Link from 'next/link'
+
 import ImageSrc from '../public/image.jpg'
 import { Experience, PageInfo, Project, Skill, Social } from '../typings'
 import { fetchPageInfo } from '../utils/fetchPageInfo'
@@ -18,8 +18,7 @@ import { fetchSkills } from '../utils/fetchSkills'
 import { fetchExperience } from '../utils/fetchExperience'
 import { fetchSocials } from '../utils/fetchSocials'
 import { fetchProjects } from '../utils/fetchProjects'
-
-// possible text color text-[rgb(128,128,128)]
+import ErrorMessage from '../components/ErrorMessage'
 
 type Props = {
   pageInfo: PageInfo
@@ -29,13 +28,21 @@ type Props = {
   socials: Social[]
 }
 
-const Home = ({ pageInfo, skills, experience, projects, socials }: Props) => {
+const Home: NextPage<Props> = ({
+  pageInfo,
+  skills,
+  experience,
+  projects,
+  socials,
+}: Props) => {
   return (
-    <div
-      // onScroll={stickyHeader}
-      className='z-0 bg-[rgb(36,36,36)] text-zinc-300 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll scroll-smooth transition-all delay-300 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-primary '
-    >
+    <div className='z-0 bg-[rgb(36,36,36)] text-zinc-300 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll scroll-smooth transition-all delay-300 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-primary '>
       <Head>
+        {(!pageInfo.image ||
+          skills.length == 0 ||
+          experience.length == 0 ||
+          projects.length == 0 ||
+          socials.length == 0) && <ErrorMessage status={404} />}
         <title>Welcome to Ed&apos;s World</title>
         <meta
           name='decription'
