@@ -1,5 +1,4 @@
 import type { GetStaticProps, NextPage } from 'next'
-import React, { useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -31,20 +30,6 @@ type Props = {
 }
 
 const Home = ({ pageInfo, skills, experience, projects, socials }: Props) => {
-  // const [isShowBackTopBtn, setShowBackToTop] = React.useState<boolean>(false)
-  // const stickyHeader = () => {
-  //   console.log(
-  //     'pageYOffset',
-  //     window.pageYOffset,
-  //     'window inner width',
-  //     window.innerWidth
-  //   )
-  //   console.log('width', window.innerWidth)
-  //   window.pageYOffset > window.innerWidth
-  //     ? setShowBackToTop(true)
-  //     : setShowBackToTop(false)
-  // }
-
   return (
     <div
       // onScroll={stickyHeader}
