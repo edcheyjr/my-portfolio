@@ -77,7 +77,6 @@ function Contact({ pageInfo }: Props) {
       )
     // send a success messaage back should be a modal thank you for contacting.I will get back to you through your email, looking forward to knowing and interacting with you
   }
-  console.log(errors)
   return (
     <div className='relative flex flex-col text-center md:text-left xl:flex-row max-w-7xl px-10  min-h-screen w-screen justify-center mx-auto items-center'>
       <SectionTitle>contact me</SectionTitle>
