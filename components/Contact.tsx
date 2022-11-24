@@ -45,6 +45,7 @@ function Contact({ pageInfo }: Props) {
   } = useForm<Inputs>()
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    setIsSubmitting(true)
     // send to my email through email server
     const templateEmailParam: EmailTemplate = {
       from_email: data.email,
@@ -63,7 +64,6 @@ function Contact({ pageInfo }: Props) {
       )
       .then(
         (result: any) => {
-          setIsSubmitting(true)
           console.log(result)
           if (result?.status == 200) {
             setShowModal(true)
