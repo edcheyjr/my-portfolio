@@ -18,7 +18,11 @@ export const fetchPageInfo = async () => {
   }
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/getPageInfo`
+      `${
+        process.env.NODE_ENV == 'production'
+          ? process.env.NEXT_PUBLIC_BASE_URL
+          : 'http://localhost:3000/'
+      }/api/getPageInfo`
     )
     const data = await response.json()
     pageInfo = data.pageInfo

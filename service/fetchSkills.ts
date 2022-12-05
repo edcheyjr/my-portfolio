@@ -4,7 +4,11 @@ export const fetchSkills = async () => {
   let skills: Skill[] = []
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/getSkills`
+      `${
+        process.env.NODE_ENV == 'production'
+          ? process.env.NEXT_PUBLIC_BASE_URL
+          : 'http://localhost:3000/'
+      }/api/getSkills`
     )
     const data = await response.json()
 

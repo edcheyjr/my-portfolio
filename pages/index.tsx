@@ -13,11 +13,11 @@ import Contact from '../components/Contact'
 
 import ImageSrc from '../public/image.jpg'
 import { Experience, PageInfo, Project, Skill, Social } from '../typings'
-import { fetchPageInfo } from '../utils/fetchPageInfo'
-import { fetchSkills } from '../utils/fetchSkills'
-import { fetchExperience } from '../utils/fetchExperience'
-import { fetchSocials } from '../utils/fetchSocials'
-import { fetchProjects } from '../utils/fetchProjects'
+import { fetchPageInfo } from '../service/fetchPageInfo'
+import { fetchSkills } from '../service/fetchSkills'
+import { fetchExperience } from '../service/fetchExperience'
+import { fetchSocials } from '../service/fetchSocials'
+import { fetchProjects } from '../service/fetchProjects'
 import ErrorMessage from '../components/ErrorMessage'
 
 type Props = {
