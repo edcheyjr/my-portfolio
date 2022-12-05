@@ -52,7 +52,7 @@ const ExperienceCard = ({ experience }: Props) => {
         </div>
         {/* roles */}
         <ul className='list-disc space-y-4 ml-5 md:text-lg px-7 h-64 overflow-x-scroll scrollbar-thumb-primary scrollbar-thin'>
-          {experience.points?.map((point, key) => (
+          {experience?.points?.map((point, key) => (
             <li key={key}>{point}</li>
           ))}
         </ul>
