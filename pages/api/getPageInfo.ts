@@ -16,5 +16,11 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const pageInfo: PageInfo = await getClient(false).fetch(query)
+  res.setHeader(
+    'Access-Control-Allow-Origin',
+    process.env.NODE_ENV == 'production'
+      ? process.env.NEXT_PUBLIC_BASE_URL || "'http://localhost:3000/'"
+      : 'http://localhost:3000/'
+  )
   res.status(200).json({ pageInfo })
 }
