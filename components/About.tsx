@@ -3,9 +3,10 @@ import { motion } from 'framer-motion'
 import SectionTitle from './SectionTitle'
 import { PageInfo } from '../typings'
 import { urlFor } from '../lib/sanity'
+import DefaultImage from '../public/image.jpg'
 
 type Props = {
-  pageInfo: PageInfo
+  pageInfo: PageInfo | undefined
 }
 
 export default function About({ pageInfo }: Props) {
@@ -19,7 +20,9 @@ export default function About({ pageInfo }: Props) {
         }}
         alt={pageInfo?.name || 'No image'}
         src={
-          pageInfo?.image ? urlFor(pageInfo?.image).url() : '/public/image.jpg'
+          pageInfo?.image
+            ? urlFor(pageInfo?.image).url()
+            : '../public/image.jpg'
         }
         transition={{
           duration: 1.2,

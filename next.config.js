@@ -42,15 +42,15 @@ const nextConfig = {
   images: {
     domains: ['cdn.sanity.io', 'edcheyjr.github.io'],
   },
-  async headers() {
-    return [
-      {
-        // Apply these headers to all routes in your application.
-        source: '/:path*',
-        headers: securityHeaders,
-      },
-    ]
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       // Apply these headers to all routes in your application.
+  //       source: '/:path*',
+  //       headers: securityHeaders,
+  //     },
+  //   ]
+  // },
 }
 
 module.exports = nextConfig
