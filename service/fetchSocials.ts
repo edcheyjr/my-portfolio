@@ -4,11 +4,7 @@ export const fetchSocials = async () => {
   let socials: Social[] = []
   try {
     const response = await fetch(
-      `${
-        process.env.NODE_ENV == 'production'
-          ? process.env.NEXT_PUBLIC_BASE_URL
-          : 'http://localhost:3000'
-      }/api/getSocials`
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/getSocials`
     )
     const data = await response.json()
 

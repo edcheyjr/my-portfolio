@@ -1,14 +1,14 @@
 import { Experience } from '../typings'
 
 export const fetchExperience = async () => {
+  console.log(
+    'process.env.NEXT_PUBLIC_BASE_URL',
+    process.env.NEXT_PUBLIC_BASE_URL
+  )
   let experience: Experience[] = []
   try {
     const response = await fetch(
-      `${
-        process.env.NODE_ENV == 'production'
-          ? process.env.NEXT_PUBLIC_BASE_URL
-          : 'http://localhost:3000'
-      }/api/getExperience`
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/getExperience`
     )
     const data = await response.json()
 
