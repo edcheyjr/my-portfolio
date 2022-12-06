@@ -40,7 +40,11 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['cdn.sanity.io', 'edcheyjr.github.io'],
+    domains: [
+      'cdn.sanity.io',
+      'edcheyjr.github.io',
+      'my-portfolio-edcheyjr.vercel.app',
+    ],
   },
   // async headers() {
   //   return [
