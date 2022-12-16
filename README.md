@@ -1,6 +1,6 @@
 # Portfolio
 
-To Know more about me and what i do go to this webpage **[`edchey`](https://edchey.com)**
+To Know more about me and what i do go to this webpage **[`edchey`](https://edcheyjr.github.io/my-portfolio/)**
 
 <!-- Next Js  -->
 
