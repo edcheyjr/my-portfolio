@@ -22,14 +22,7 @@ export const fetchPageInfo = async () => {
     _rev: 'none',
   }
   try {
-    // const response = await fetch(
-    //   `https://${process.env.NEXT_PUBLIC_BASE_URL}/api/getPageInfo`
-    // )
-    // const data = await response.json()
-    // pageInfo = data.pageInfo
     const pageInfo: PageInfo = await getClient(false).fetch(query)
-    console.log('pageInfo', pageInfo)
-
     return pageInfo
   } catch (error) {
     console.error(

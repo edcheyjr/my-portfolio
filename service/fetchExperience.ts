@@ -11,13 +11,7 @@ const query = groq`
 export const fetchExperience = async () => {
   let experience: Experience[] = []
   try {
-    // const response = await fetch(
-    //   `https://${process.env.NEXT_PUBLIC_BASE_URL}/api/getExperience`
-    // )
-    // const data = await response.json()
-
     const experience: Experience[] = await getClient(false).fetch(query)
-
     return experience
   } catch (error) {
     console.error(
