@@ -1,5 +1,10 @@
 import { PageInfo } from '../typings'
+import { groq } from 'next-sanity'
+import { getClient } from '../lib/sanity.server'
 
+const query = groq`
+*[_type=="pageInfo"][0]
+`
 export const fetchPageInfo = async () => {
   let pageInfo: PageInfo = {
     _type: 'pageInfo',
@@ -17,11 +22,13 @@ export const fetchPageInfo = async () => {
     _rev: 'none',
   }
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/getPageInfo`
-    )
-    const data = await response.json()
-    pageInfo = data.pageInfo
+    // const response = await fetch(
+    //   `https://${process.env.NEXT_PUBLIC_BASE_URL}/api/getPageInfo`
+    // )
+    // const data = await response.json()
+    // pageInfo = data.pageInfo
+    const pageInfo: PageInfo = await getClient(false).fetch(query)
+    console.log('pageInfo', pageInfo)
 
     return pageInfo
   } catch (error) {

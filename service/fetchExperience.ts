@@ -1,20 +1,22 @@
 import { Experience } from '../typings'
+import { groq } from 'next-sanity'
+import { getClient } from '../lib/sanity.server'
+
+const query = groq`
+*[_type=="experience"]{
+ ...,
+ technologies[]->
+}`
 
 export const fetchExperience = async () => {
-  console.log(
-    'process.env.NEXT_PUBLIC_BASE_URL',
-    process.env.NEXT_PUBLIC_BASE_URL
-  )
   let experience: Experience[] = []
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/getExperience`
-    )
-    const data = await response.json()
+    // const response = await fetch(
+    //   `https://${process.env.NEXT_PUBLIC_BASE_URL}/api/getExperience`
+    // )
+    // const data = await response.json()
 
-    // console.log("skills", data)
-    // type check
-    experience = data.experience
+    const experience: Experience[] = await getClient(false).fetch(query)
 
     return experience
   } catch (error) {
