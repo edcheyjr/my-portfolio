@@ -35,6 +35,7 @@ const Home: NextPage<Props> = ({
   projects,
   socials,
 }: Props) => {
+   console.log("pageInfo",pageInfo)
   return (
     <div className='z-0 bg-[rgb(36,36,36)] text-zinc-300 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll scroll-smooth transition-all delay-300 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-primary '>
       <Head>
