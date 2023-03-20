@@ -102,6 +102,7 @@ export default Home
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const pageInfo = await fetchPageInfo()
+  console.log("pageInfo",pageInfo)
   const skills = await fetchSkills()
   const experience = await fetchExperience()
   const projects = await fetchProjects()
