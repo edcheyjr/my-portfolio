@@ -22,6 +22,7 @@ export default function Header({ socials }: Props) {
         {socials.map((social, key) => (
           <SocialIcon
             className='cursor-pointer'
+            title={social.title}
             key={social._id}
             url={social.url}
             bgColor='transparent'

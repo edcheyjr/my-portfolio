@@ -17,7 +17,7 @@ export default function Hero({ pageInfo }: Props) {
     words: [
       'Como estás',
       `The Name's ${pageInfo?.name}`,
-      'Guy-Who-Loves-Spanish.tsx',
+      'Guy-Who-Loves-Music.tsx',
       '<ButLovesCodingMore/>',
     ],
     loop: true,
@@ -31,7 +31,6 @@ export default function Hero({ pageInfo }: Props) {
         className='rounded-full h-32 w-32 mx-auto object-cover'
         src={pageInfo.profilePic ? urlFor(pageInfo.profilePic).url() : ImageSrc}
         alt={pageInfo.name || 'noImage'}
-        objectFit='cover'
         loading='eager'
         height={128}
         width={128}
