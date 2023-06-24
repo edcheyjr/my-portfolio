@@ -24,6 +24,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       )}
     >
       <Component {...pageProps} />
+      {process.env.NODE_ENV !== 'development' && <Analytics/>}
+      
     </ErrorBoundary>
   )
 }
