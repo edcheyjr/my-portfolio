@@ -1,13 +1,14 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ErrorBoundary } from 'react-error-boundary'
+import { Analytics } from '@vercel/analytics/react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ErrorBoundary
       // reset the state of your app so the error doesn't happen again
       onReset={() => {
-        return <div>We are fixing it!!!</div>
+        return <div>We are fixing it!!</div>
       }}
       fallbackRender={({ error, resetErrorBoundary }) => (
         <div className='w-full h-full flex flex-col items-center justify-center space-y-6'>
@@ -24,6 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       )}
     >
       <Component {...pageProps} />
+      <Analytics/>
     </ErrorBoundary>
   )
 }
