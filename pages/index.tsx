@@ -20,8 +20,6 @@ import { fetchSocials } from '../service/fetchSocials'
 import { fetchProjects } from '../service/fetchProjects'
 import ErrorMessage from '../components/ErrorMessage'
 
-
-
 type Props = {
   pageInfo: PageInfo
   experience: Experience[]
@@ -88,9 +86,8 @@ const Home: NextPage<Props> = ({
               <Image
                 src={ImageSrc}
                 alt='go back to top image button'
-                layout='fill'
-                objectFit='cover'
-                className='rounded-full '
+                fill
+                className='rounded-full object-cover'
               />
             </div>
           </Link>
@@ -103,7 +100,6 @@ const Home: NextPage<Props> = ({
 export default Home
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  
   const pageInfo = await fetchPageInfo()
   const skills = await fetchSkills()
   const experience = await fetchExperience()
