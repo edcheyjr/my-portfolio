@@ -10,13 +10,15 @@ export const config = {
    **/
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'none',
-  apiVersion: '2022-10-21', // Learn more: https://www.sanity.io/docs/api-versioning | https://stripe.com/blog/api-versioning
+  apiVersion: '2023-08-22', // Learn more: https://www.sanity.io/docs/api-versioning | https://stripe.com/blog/api-versioning ..previous api '2022-10-21'
   /**
    * Set useCdn to `false` if your application require the freshest possible
    * data always (potentially slightly slower and a bit more expensive).
    * Authenticated request (like preview) will always bypass the CDN
    **/
-  useCdn: process.env.NODE_ENV === 'production',
+  useCdn: process.env.NODE_ENV === 'production', // if you're using ISR or only static generation at build time then you can set this to `false` to guarantee no stale content
+  studioUrl: '/studio', //TODO Or: 'https://edchey.sanity.studio'
+  encodeSourceMap: true, //TODO Optional. Default to: process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview',
 
   /**
    * OPTIONAL config to enable authentication with custom token

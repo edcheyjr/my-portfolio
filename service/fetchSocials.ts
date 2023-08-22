@@ -1,6 +1,6 @@
 import { Social } from '../typings'
 import { groq } from 'next-sanity'
-import { sanityClient } from '../lib/sanity.server'
+import { sanityFetch } from '../lib/sanity'
 
 const query = groq`
 *[_type=="social"]
@@ -8,7 +8,10 @@ const query = groq`
 export const fetchSocials = async () => {
   let socials: Social[] = []
   try {
-    const socials: Social[] = await sanityClient.fetch(query)
+    const socials: Social[] = await sanityFetch({
+      query: query,
+      tags: ['socials'],
+    })
     console.log('social', socials)
     return socials
   } catch (error) {

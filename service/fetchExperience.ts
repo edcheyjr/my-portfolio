@@ -1,6 +1,6 @@
 import { Experience } from '../typings'
 import { groq } from 'next-sanity'
-import { getClient } from '../lib/sanity.server'
+import { sanityFetch } from '../lib/sanity'
 
 const query = groq`
 *[_type=="experience"]{
@@ -11,7 +11,10 @@ const query = groq`
 export const fetchExperience = async () => {
   let experience: Experience[] = []
   try {
-    const experience: Experience[] = await getClient(false).fetch(query)
+    const experience: Experience[] = await sanityFetch({
+      query: query,
+      tags: ['experience'],
+    })
     return experience
   } catch (error) {
     console.error(

@@ -1,6 +1,6 @@
+import { sanityFetch } from '../lib/sanity'
 import { Project } from '../typings'
 import { groq } from 'next-sanity'
-import { sanityClient } from '../lib/sanity.server'
 
 const query = groq`
 *[_type=="project"]{
@@ -10,10 +10,12 @@ const query = groq`
 `
 
 export const fetchProjects = async () => {
-
   let projects: Project[] = []
   try {
-    const projects: Project[] = await sanityClient.fetch(query)
+    const projects: Project[] = await sanityFetch({
+      query: query,
+      tags: ['technolgies'],
+    })
     return projects
   } catch (error) {
     console.log(

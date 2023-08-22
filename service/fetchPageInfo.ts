@@ -1,6 +1,6 @@
 import { PageInfo } from '../typings'
 import { groq } from 'next-sanity'
-import { getClient } from '../lib/sanity.server'
+import { sanityFetch } from '../lib/sanity'
 
 const query = groq`
 *[_type=="pageInfo"][0]
@@ -22,7 +22,10 @@ export const fetchPageInfo = async () => {
     _rev: 'none',
   }
   try {
-    const pageInfo: PageInfo = await getClient(false).fetch(query)
+    const pageInfo: PageInfo = await sanityFetch({
+      query: query,
+      tags: ['pageInfo'],
+    })
     return pageInfo
   } catch (error) {
     console.error(
