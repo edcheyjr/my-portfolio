@@ -1,19 +1,13 @@
+import 'server-only'
 import createImageUrlBuilder from '@sanity/image-url'
 import { config } from './config'
-import { Image } from '../typings'
+import { Image } from '../../typings'
 import { QueryParams } from 'next-sanity'
-import { createClient, groq } from 'next-sanity'
 import { sanityClient } from './sanity.server'
 const DEFAULT_PARAMS = {} as QueryParams
 const DEFAULT_TAGS = [] as string[]
 
 const token = process.env.SANITY_API_TOKEN
-/**
- * Set up a helper function for generating Image URLs with only the asset reference data in your documents.
- * Read more: https://www.sanity.io/docs/image-url
- **/
-export const urlFor = (source: Image) =>
-  createImageUrlBuilder(config).image(source)
 
 /**
  * This are no longer used
