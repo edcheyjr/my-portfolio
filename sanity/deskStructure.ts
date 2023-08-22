@@ -1,4 +1,4 @@
-export default (S :any) =>
+export default (S: any) =>
   S.list()
     .title('Content')
     .items([
@@ -11,6 +11,6 @@ export default (S :any) =>
             .documentId('settings')
         ),
       ...S.documentTypeListItems().filter(
-        (listItem:any) => !['settings'].includes(listItem.getId())
+        (listItem: any) => !['settings'].includes(listItem.getId())
       ),
     ])
