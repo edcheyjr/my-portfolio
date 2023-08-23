@@ -11,7 +11,7 @@ const montserrat = Montserrat_Alternates({
 export const metadata: Metadata = {
   title: "Welcome to Ed's World",
   description: 'All about who is Edwin Chebii',
-} //metadata to improve SEO
+} //TODO metadata to improve SEO
 
 export default async function RootLayout({
   children,
@@ -21,10 +21,10 @@ export default async function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`z-0 bg-[rgb(36,36,36)] text-zinc-300 h-full snap-y snap-mandatory overflow-x-hidden overflow-y-scroll scroll-smooth transition-all delay-300 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-primary`}
+        className={`z-0 bg-[rgb(36,36,36)] text-zinc-300 h-screen overflow-x-hidden overflow-y-scroll scroll-smooth transition-all delay-300 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-primary`}
       >
         {/*TODO Header should be here */}
-        <div className=''>{children}</div>
+        {children}
         {/* TODO Footer */}
       </body>
     </html>
