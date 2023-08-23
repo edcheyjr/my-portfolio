@@ -31,7 +31,11 @@ const Home = async () => {
     projects.length == 0 ||
     socials.length == 0
   ) {
-    return <ErrorMessage status={404} />
+    return (
+      <div className='mx-auto my-auto py-4'>
+        <ErrorMessage status={404} />
+      </div>
+    )
   }
   return (
     <div className='mx-auto py-4'>
