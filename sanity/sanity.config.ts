@@ -1,24 +1,31 @@
 import { deskTool } from 'sanity/desk'
-import { defineConfig } from 'sanity'
+import { Tool, defineConfig } from 'sanity'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas/index'
-import deskStructure from './deskStructure'
+import deskStructure from './deskStructure' //Has errors name not defined by sanity setting card
 import { Logo } from './plugins/my-logo/Logo'
-
+import ExampleTool from './plugins/my-tools/ExampleTool'
 export default defineConfig({
   name: 'my-portfolio',
   projectId: 'e2f024ld',
   dataset: 'production',
-  plugins: [deskTool({ structure: deskStructure }), visionTool()],
+  tools: (prev) => {
+    const env = process.env.SANITY_ACTIVE_ENV || process.env.NODE_ENV
+    console.log('env:', env)
+    //TODO This hides vision tool in production which is a quering tool
+    // 👇 Uses environment variables set by Vite in development mode
+
+    if (env == 'development') {
+      return [...prev, ExampleTool({ title: 'custom tool' })]
+    }
+    return [
+      ...prev.filter((tool) => tool.name !== 'vision'),
+      ExampleTool({ title: 'custom tool' }),
+    ]
+  },
+  plugins: [deskTool(), visionTool()],
   schema: {
     types: schemaTypes,
-  },
-  tools: (prev) => {
-    // 👇 Uses environment variables set by Vite in development mode
-    if (process.env.DEV) {
-      return prev
-    }
-    return prev.filter((tool) => tool.name !== 'vision')
   },
   studio: {
     components: {
