@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /sanity/node_modules
+/sanity/.sanity
 /sanity/dist
 /.pnp
 .pnp.js
@@ -28,6 +29,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
+.env
 .env*.local
 
 # vercel
@@ -36,5 +38,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-TODO.txt
 .vercel
+# TODO
+TODO
