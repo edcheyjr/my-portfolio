@@ -13,7 +13,9 @@ jobs:
         id: metadata
         uses: dependabot/fetch-metadata@v1.1.1
         with:
-          github-token: "${{ secrets.DEPENDABOT_TOKEN }}"
+            alert-lookup: true
+            compat-lookup: true
+            dependabot-token: "${{ secrets.DEPENDABOT_TOKEN }}"
           
       - name: Enable auto-merge for Dependabot PRs
         if: |
