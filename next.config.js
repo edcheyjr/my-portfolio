@@ -46,15 +46,18 @@ const nextConfig = {
       'my-portfolio-edcheyjr.vercel.app',
     ],
   },
-//   async headers() {
-//     return [
-//       {
-//         // Apply these headers to all routes in your application.
-//         source: '/:path*',
-//         headers: securityHeaders,
-//       },
-//     ]
-//   },
+  //   async headers() {
+  //     return [
+  //       {
+  //         // Apply these headers to all routes in your application.
+  //         source: '/:path*',
+  //         headers: securityHeaders,
+  //       },
+  //     ]
+  //   },
+  experimental: {
+    logging: 'verbose', //for debugginng
+  },
 }
 
 module.exports = nextConfig
