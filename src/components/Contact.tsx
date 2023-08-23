@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import SectionTitle from './SectionTitle'
 import { useForm, SubmitHandler } from 'react-hook-form'
@@ -7,7 +9,7 @@ import {
   MapPinIcon,
   EnvelopeIcon,
 } from '@heroicons/react/24/outline'
-import { PageInfo } from '../typings'
+import { PageInfo } from '../../typings'
 import Modal from './Modal'
 
 const currentEmail = 'edwin.kibet@neurallabs.africa'

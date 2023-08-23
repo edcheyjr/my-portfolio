@@ -1,6 +1,7 @@
+'use client'
 import { motion } from 'framer-motion'
 import React from 'react'
-import { Skill as SkillType } from '../typings'
+import { Skill as SkillType } from '@types.d'
 import SectionTitle from './SectionTitle'
 import Skill from './Skill'
 

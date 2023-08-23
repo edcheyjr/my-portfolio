@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
-import { Skill } from '../typings'
-import { urlFor } from '../lib/sanity'
+import { Skill } from '@types.d'
+import { urlFor } from '@lib/imageUrResolver'
 
 type Props = {
   tech: Skill

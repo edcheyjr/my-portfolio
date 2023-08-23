@@ -1,8 +1,10 @@
+'use client'
+
 import React from 'react'
 import { motion } from 'framer-motion'
 import SectionTitle from './SectionTitle'
-import { PageInfo } from '../typings'
-import { urlFor } from '../lib/sanity'
+import { PageInfo } from '@types.d'
+import { urlFor } from '@lib/imageUrResolver'
 import DefaultImage from '../public/image.jpg'
 
 type Props = {

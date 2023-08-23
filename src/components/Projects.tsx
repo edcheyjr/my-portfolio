@@ -1,9 +1,11 @@
+'use client'
+
 import React from 'react'
 import { motion } from 'framer-motion'
 
-// Import Swiper React components
+//These {React Components MOVE TO } seems will be depreciated
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Scrollbar, Pagination, Autoplay } from 'swiper'
+import { Scrollbar, Pagination, Autoplay } from 'swiper/modules'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -11,8 +13,8 @@ import 'swiper/css/scrollbar'
 import 'swiper/css/pagination'
 
 import SectionTitle from './SectionTitle'
-import { Project } from '../typings'
-import { urlFor } from '../lib/sanity'
+import { Project } from '@types.d'
+import { urlFor } from '@lib/imageUrResolver'
 import Technology from './Technology'
 
 type Props = {
@@ -55,11 +57,11 @@ function Projects({ projects }: Props) {
         className='mySwiper relative w-full px-10 py-5 justify-center items-center flex flex-col z-20'
       >
         {projects.map((project, key) => (
-          <SwiperSlide
-            key={project?._id}
-            className='w-screen flex flex-col px-5 pt-20 md:p-20 lg:p-56 h-screen'
-          >
-            <div key={key + 1} className='justify-center text-left space-y-5 '>
+          <SwiperSlide key={project?._id} className=''>
+            <div
+              key={key + 1}
+              className='w-full flex flex-col px-5 pt-20 md:p-20 lg:p-56 h-screen justify-center text-left space-y-5'
+            >
               <motion.img
                 initial={{ y: -100, opacity: 0 }}
                 transition={{ duration: 1.2 }}
@@ -82,7 +84,7 @@ function Projects({ projects }: Props) {
                   {project?.title}
                 </h3>
 
-                <p className='text-sm lg:text-lg text-center md:text-left'>
+                <p className='text-sm lg:text-lg text-center md:text-left w-full'>
                   {project?.summary}
                 </p>
               </div>

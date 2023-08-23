@@ -1,11 +1,13 @@
+'use client'
+
 import React from 'react'
 import { Cursor, useTypewriter } from 'react-simple-typewriter'
 import BackgroundCircles from './BackgroundCircles'
 import Image from 'next/image'
-import ImageSrc from '../public/image.jpg'
+import ImageSrc from '@public/image.jpg'
 import Link from 'next/link'
-import { PageInfo } from '../typings'
-import { urlFor } from '../lib/sanity'
+import { PageInfo } from '@types.d'
+import { urlFor } from '@lib/imageUrResolver'
 
 type Props = {
   pageInfo: PageInfo

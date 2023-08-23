@@ -1,6 +1,6 @@
-import { Experience } from '../typings'
+import { Experience } from '@types.d'
 import { groq } from 'next-sanity'
-import { sanityFetch } from '../lib/sanity'
+import { sanityFetch } from '@lib/sanity'
 
 const query = groq`
 *[_type=="experience"]{

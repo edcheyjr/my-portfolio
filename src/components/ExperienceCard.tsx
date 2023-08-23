@@ -1,7 +1,9 @@
+'use client'
+
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Experience } from '../typings'
-import { urlFor } from '../lib/sanity'
+import { Experience } from '@types.d'
+import { urlFor } from '@lib/imageUrResolver'
 import Technology from './Technology'
 
 type Props = {

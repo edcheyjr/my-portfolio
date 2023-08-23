@@ -1,6 +1,6 @@
-import { Social } from '../typings'
+import { Social } from '@types.d'
 import { groq } from 'next-sanity'
-import { sanityFetch } from '../lib/sanity'
+import { sanityFetch } from '@lib/sanity'
 
 const query = groq`
 *[_type=="social"]

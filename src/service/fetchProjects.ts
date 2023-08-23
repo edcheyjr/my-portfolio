@@ -1,5 +1,5 @@
-import { sanityFetch } from '../lib/sanity'
-import { Project } from '../typings'
+import { sanityFetch } from '@lib/sanity'
+import { Project } from '@types.d'
 import { groq } from 'next-sanity'
 
 const query = groq`

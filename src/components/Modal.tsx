@@ -1,4 +1,7 @@
+'use client'
+
 import { XMarkIcon } from '@heroicons/react/24/outline'
+import PrimaryButton from './PrimaryButton'
 
 type Props = {
   showModal: boolean
@@ -29,16 +32,12 @@ export default function Modal({ showModal, setShowModal, title, info }: Props) {
             {/*body*/}
             <div className='relative p-6 flex-auto'>
               <p className='my-4 text-slate-500 text-lg leading-relaxed group-hover:text-slate-400 transition duration-300'>
-                {/* I always felt like I could do anything. That’s the main thing
-                people are controlled by! Thoughts- their perception of
-                themselves! They&#39;re slowed down by their perception of
-                themselves. If you&rsquo;re taught you can’t do anything, you
-                won’t do anything. I was taught I could do everything. */}
                 {info}
               </p>
             </div>
             {/*footer*/}
             <div className='flex items-center justify-end p-6 border-t border-solid  border-t-primary/30 group-hover:border-t-primary/60 transition duration-300'>
+              {/* TODO move to button component */}
               <button
                 className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
                 type='button'
@@ -46,13 +45,9 @@ export default function Modal({ showModal, setShowModal, title, info }: Props) {
               >
                 Close
               </button>
-              <button
-                className='bg-primary/90 hover:bg-primary text-zinc-700 active:bg-pink-400 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
-                type='button'
-                onClick={() => setShowModal(false)}
-              >
+              <PrimaryButton type='button' onClick={() => setShowModal(false)}>
                 Get a quote
-              </button>
+              </PrimaryButton>
             </div>
           </div>
         </div>

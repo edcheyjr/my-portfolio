@@ -1,6 +1,6 @@
-import { Skill } from '../typings'
+import { Skill } from '@types.d'
 import { groq } from 'next-sanity'
-import { sanityFetch } from '../lib/sanity'
+import { sanityFetch } from '@lib/sanity'
 
 const query = groq`
 *[_type=="skill"]

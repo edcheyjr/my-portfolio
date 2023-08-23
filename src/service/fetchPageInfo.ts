@@ -1,6 +1,6 @@
-import { PageInfo } from '../typings'
+import { PageInfo } from '@types.d'
 import { groq } from 'next-sanity'
-import { sanityFetch } from '../lib/sanity'
+import { sanityFetch } from '@lib/sanity'
 
 const query = groq`
 *[_type=="pageInfo"][0]

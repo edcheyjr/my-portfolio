@@ -1,7 +1,9 @@
+'use client'
+
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Skill } from '../typings'
-import { urlFor } from '../lib/sanity'
+import { Skill } from '../../typings'
+import { urlFor } from '@lib/imageUrResolver'
 import Image from 'next/image'
 
 type Props = {
