@@ -48,7 +48,7 @@ export default defineConfig({
       if (schemaType === 'settings') {
         return prev.filter(
           ({ action }: DocumentActionComponent) =>
-            !['unpublish', 'delete', 'duplicate'].includes(action)
+            !['unpublish', 'delete', 'duplicate'].includes(action || '') //check if the action does not any of the following 'unpublish', 'delete', 'duplicate' and return true else false thuse filter the actions not to include this three
         )
       }
       return prev

@@ -9,7 +9,7 @@ const ExampleTool = (props: Props) => {
     title: props.title,
     name: 'my-custom-tool', // localhost:3333/my-custom-tool
     icon: DashboardIcon,
-    component: (props) => (
+    component: (prop: any) => (
       <Card padding={4}>
         <Text>
           {/* Add Functionality here */}
