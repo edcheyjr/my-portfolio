@@ -72,9 +72,8 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Build with Next.js
+      - name: Build with Next.js also include environment variables
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
-      - name: Add Env Variables
         env:
           EMAILJS_reCAPTCHA_KEY: ${{ secrets.EMAILJS_reCAPTCHA_KEY }}
           EMAILJS_TRACKING_ID: ${{ secrets.EMAILJS_TRACKING_ID }}
