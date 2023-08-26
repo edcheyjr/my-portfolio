@@ -1,0 +1,12 @@
+# Default code owner for all files (except specified exceptions)
+
+- @edcheyjr
+
+# Exclude package.json and package-lock.json from code owner requirement
+
+package.json
+package-lock.json
+
+# Files that can bypass code owner review
+
+/src/sanity-test.js
