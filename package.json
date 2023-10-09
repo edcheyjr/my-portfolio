@@ -37,7 +37,7 @@
   "devDependencies": {
     "@sanity/vision": "^3.15.1",
     "prop-types": "^15.8.1",
-    "sanity": "^3.16.7",
+    "sanity": "^3.17.0",
     "styled-components": "v5.3.11",
     "@types/node": "20.6.5",
     "@types/react": "18.2.22",
