@@ -35,7 +35,7 @@
     "swiper": "^11.0.3"
   },
   "devDependencies": {
-    "@sanity/vision": "^3.20.2",
+    "@sanity/vision": "^3.23.4",
     "prop-types": "^15.8.1",
     "sanity": "^3.20.2",
     "styled-components": "v5.3.11",
