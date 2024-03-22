@@ -12,8 +12,8 @@ import {
 import { PageInfo } from '../../typings'
 import Modal from './Modal'
 
-const currentEmail = 'edwin.kibet@neurallabs.africa'
-const currentName = 'edwin chebii'
+const currentEmail = MY_WORK_MAIL
+const currentName = MY_NAMES
 // prop types
 type Props = {
   pageInfo: PageInfo
@@ -43,6 +43,7 @@ function Contact({ pageInfo }: Props) {
     register,
     handleSubmit,
     watch,
+    getValues,
     formState: { errors },
   } = useForm<Inputs>()
 
@@ -192,6 +193,7 @@ function Contact({ pageInfo }: Props) {
           <Modal
             showModal={showModal}
             setShowModal={setShowModal}
+            clientInfo={getValues()}
             title={'Successful delivered'}
             info={'Thank you for your feedback!, I will get back to you soon.'}
           />
