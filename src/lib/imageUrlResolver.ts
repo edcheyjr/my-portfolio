@@ -6,3 +6,4 @@ import { config } from './config'
  * Read more: https://www.sanity.io/docs/image-url
  **/
 export const urlFor = (source: Image) =>
+  createImageUrlBuilder(config as any).image(source)
