@@ -73,7 +73,11 @@ function Contact({ pageInfo }: Props) {
           }
         },
         (error: any) => {
-          setError(error?.text)
+          setError(
+            process.env.NODE_ENV == 'development'
+              ? error?.text
+              : 'Error sending mail right now, Sorry🥲. Reach out using the email above⬆️'
+          )
           setIsSubmitting(false)
         }
       )
