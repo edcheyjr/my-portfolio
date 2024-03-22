@@ -2,13 +2,13 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Skill } from '../../typings'
+import { Skill as SkillType } from '@types.d'
 import { urlFor } from '@lib/imageUrlResolver'
 import Image from 'next/image'
 
 type Props = {
   directionLeft: boolean
-  skill: Skill
+  skill: SkillType
 }
 
 function Skill({ directionLeft, skill }: Props) {
