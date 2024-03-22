@@ -1,5 +1,5 @@
-/** @type {import('next').NextConfig} */
-// security headers
+/** security headers
+ **/
 const securityHeaders = [
   // This header controls DNS prefetching, allowing browsers to proactively perform domain name resolution on external links, images, CSS, JavaScript, and more. This prefetching is performed in the background, so the DNS is more likely to be resolved by the time the referenced items are needed. This reduces latency when the user clicks a link.
   {
@@ -36,28 +36,41 @@ const securityHeaders = [
     value: 'origin-when-cross-origin',
   },
 ]
+
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: [
-      'cdn.sanity.io',
-      'edcheyjr.github.io',
-      'my-portfolio-edcheyjr.vercel.app',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'edcheyjr.github.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'my-portfolio-edcheyjr.vercel.app',
+      },
     ],
   },
-  //   async headers() {
-  //     return [
-  //       {
-  //         // Apply these headers to all routes in your application.
-  //         source: '/:path*',
-  //         headers: securityHeaders,
-  //       },
-  //     ]
-  //   },
-  experimental: {
-    logging: 'verbose', //for debugginng
+  async headers() {
+    return [
+      {
+        // Apply these headers to all routes in your application.
+        source: '/:path*',
+        headers: securityHeaders,
+      },
+    ]
+  },
+  // logging
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
   },
 }
 
