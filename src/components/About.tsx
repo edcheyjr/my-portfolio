@@ -20,6 +20,7 @@ export default function About({ pageInfo }: Props) {
           x: -200,
           opacity: 0,
         }}
+        fetchPriority='high'
         alt={pageInfo?.name || 'No image'}
         src={
           pageInfo?.image
