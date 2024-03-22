@@ -18,7 +18,7 @@ const ExperienceCard = ({ experience }: Props) => {
         transition={{ duration: 1.2 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className='rounded-full w-32 h-32 md:w-[100px] md:h-[100px] object-cover object-center'
+        className='rounded-full size-32 md:w-[100px] md:h-[100px] object-cover object-center'
         src={urlFor(experience.companyImage).url()}
         alt={experience.company || 'No company name'}
       />
