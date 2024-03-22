@@ -25,7 +25,7 @@ export default function Modal({
   info,
   clientInfo,
 }: Props) {
-  const emailContent = getAQuote(clientInfo.name, 'Edwin Chebii', [
+  const emailContent = getAQuote('Edwin Chebii', clientInfo.name, [
     'Software Development',
     'Software testing',
     'Game Develpment',
