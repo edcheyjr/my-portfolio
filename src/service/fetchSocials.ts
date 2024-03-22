@@ -12,10 +12,10 @@ export const fetchSocials = async () => {
       query: query,
       tags: ['socials'],
     })
-    console.log('social', socials)
+    // console.log('social', socials)
     return socials
   } catch (error) {
-    console.log(
+    console.error(
       '[Server did not respond ] check you connection first. error-',
       error
     )

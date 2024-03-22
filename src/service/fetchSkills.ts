@@ -12,7 +12,7 @@ export const fetchSkills = async () => {
     const skills: Skill[] = await sanityFetch({ query, tags: ['skills'] })
     return skills
   } catch (error) {
-    console.log(
+    console.error(
       '[Server did not respond ] check you connection first. error-',
       error
     )

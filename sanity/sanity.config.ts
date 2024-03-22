@@ -11,7 +11,6 @@ export default defineConfig({
   dataset: 'production',
   tools: (prev: Tool<any>[]) => {
     const env = process.env.SANITY_ACTIVE_ENV || process.env.NODE_ENV
-    console.log('env:', env)
     //TODO This hides vision tool in production which is a quering tool
     // 👇 Uses environment variables set by Vite in development mode
 

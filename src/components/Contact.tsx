@@ -66,7 +66,7 @@ function Contact({ pageInfo }: Props) {
       )
       .then(
         (result: any) => {
-          console.log(result)
+          // console.log(result)
           if (result?.status == 200) {
             setShowModal(true)
             setIsSubmitting(false)
