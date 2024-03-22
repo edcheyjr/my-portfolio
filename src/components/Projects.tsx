@@ -14,7 +14,7 @@ import 'swiper/css/pagination'
 
 import SectionTitle from './SectionTitle'
 import { Project } from '@types.d'
-import { urlFor } from '@lib/imageUrResolver'
+import { urlFor } from '@lib/imageUrlResolver'
 import Technology from './Technology'
 
 type Props = {

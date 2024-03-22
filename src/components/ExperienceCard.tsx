@@ -3,7 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Experience } from '@types.d'
-import { urlFor } from '@lib/imageUrResolver'
+import { urlFor } from '@lib/imageUrlResolver'
 import Technology from './Technology'
 
 type Props = {
@@ -53,9 +53,11 @@ const ExperienceCard = ({ experience }: Props) => {
             : new Date(experience?.dateEnded).toDateString()}
         </div>
         {/* roles */}
-        <ul className='list-disc space-y-4 ml-5 md:text-lg px-7 h-64 overflow-x-scroll scrollbar-thumb-primary scrollbar-thin'>
+        <ul className='list-disc space-y-4 ml-5 md:text-lg px-7 h-64 overflow-x-auto scrollbar-thumb-primary scrollbar-thin'>
           {experience?.points?.map((point, key) => (
-            <li key={key}>{point}</li>
+            <li key={key} className=''>
+              {point}
+            </li>
           ))}
         </ul>
       </motion.div>

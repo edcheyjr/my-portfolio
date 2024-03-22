@@ -4,7 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import SectionTitle from './SectionTitle'
 import { PageInfo } from '@types.d'
-import { urlFor } from '@lib/imageUrResolver'
+import { urlFor } from '@lib/imageUrlResolver'
 import DefaultImage from '../public/image.jpg'
 
 type Props = {
@@ -52,7 +52,7 @@ export default function About({ pageInfo }: Props) {
           </span>{' '}
           about me
         </h4>
-        <p className='text-sm sm:text-base'>
+        <p className='text-sm sm:text-base leading-relaxed xl:leading-loose'>
           {pageInfo?.backgroundInformation ||
             'No background info at the moment'}
         </p>
