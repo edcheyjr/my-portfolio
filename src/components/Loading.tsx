@@ -5,7 +5,7 @@ type Props = {}
 
 const Loading = (props: Props) => {
   return (
-    <div className='min-h-screen mx-auto my-auto'>
+    <div className='min-h-screen w-full flex justify-center items-center'>
       <IcLoader className='animate-spin fill-current text-primary size-10' />
     </div>
   )
