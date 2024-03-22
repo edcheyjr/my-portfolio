@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { Skill } from '@types.d'
-import { urlFor } from '@lib/imageUrResolver'
+import { urlFor } from '@lib/imageUrlResolver'
 
 type Props = {
   tech: Skill
@@ -13,9 +13,9 @@ const Technology = ({ tech }: Props) => {
       <Image
         alt={tech?.title}
         title={tech?.title}
-        className=''
+        className='object-contain'
+        sizes='(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33.3vw'
         layout='fill'
-        objectFit='contain'
         src={urlFor(tech?.image).url()}
       />
     </div>
