@@ -33,7 +33,6 @@ function Skill({ directionLeft, skill }: Props) {
           }
           width={56}
           height={56}
-          sizes='(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33.3vw'
         />
       </div>
 
