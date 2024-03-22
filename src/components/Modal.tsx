@@ -4,6 +4,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import PrimaryButton from './PrimaryButton'
 import Link from 'next/link'
 import getAQuote from '../utils/getAfreelanceQuote'
+import { MY_WORK_MAIL } from '../utils/constants'
 
 type Props = {
   showModal: boolean

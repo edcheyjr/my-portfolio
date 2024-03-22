@@ -11,6 +11,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { PageInfo } from '../../typings'
 import Modal from './Modal'
+import { MY_NAMES, MY_WORK_MAIL } from '../utils/constants'
 
 const currentEmail = MY_WORK_MAIL
 const currentName = MY_NAMES
