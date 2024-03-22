@@ -52,8 +52,8 @@ jobs:
         with:
           node-version: '18'
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Install sharp dependency
-        run: npm i sharp
+      # - name: Install sharp dependency
+      #   run: npm i sharp
       - name: Setup Pages
         uses: actions/configure-pages@v2
         with:
