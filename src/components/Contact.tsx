@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SectionTitle from './SectionTitle'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
@@ -83,6 +83,23 @@ function Contact({ pageInfo }: Props) {
       )
     // send a success messaage back should be a modal thank you for contacting.I will get back to you through your email, looking forward to knowing and interacting with you
   }
+
+  // clear error
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout
+    // Reset error state after 5 seconds
+    if (error) {
+      timeoutId = setTimeout(() => {
+        setError('')
+      }, 2 * 60 * 1000) // 1 mins or 60 secs
+    }
+
+    // Cleanup function to clear timeout when component unmounts or error changes
+    return () => {
+      clearTimeout(timeoutId)
+    }
+  }, [error])
+
   return (
     <div className='relative flex flex-col text-center md:text-left xl:flex-row max-w-7xl px-10  min-h-screen w-screen justify-center mx-auto items-center'>
       <SectionTitle>contact me</SectionTitle>
