@@ -7,7 +7,7 @@ import Image from 'next/image'
 import ImageSrc from '@public/image.jpg'
 import Link from 'next/link'
 import { PageInfo } from '@types.d'
-import { urlFor } from '@lib/imageUrResolver'
+import { urlFor } from '@lib/imageUrlResolver'
 
 type Props = {
   pageInfo: PageInfo
@@ -35,7 +35,9 @@ export default function Hero({ pageInfo }: Props) {
         alt={pageInfo.name || 'noImage'}
         loading='eager'
         height={128}
+        priority
         width={128}
+        sizes='(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33.3vw'
       />
 
       <div className='space-y-2 relative'>

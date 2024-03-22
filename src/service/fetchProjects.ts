@@ -18,7 +18,7 @@ export const fetchProjects = async () => {
     })
     return projects
   } catch (error) {
-    console.log(
+    console.error(
       '[Server did not respond ] check you connection first. error-',
       error
     )

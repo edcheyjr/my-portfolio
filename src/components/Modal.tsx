@@ -2,14 +2,40 @@
 
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import PrimaryButton from './PrimaryButton'
+import Link from 'next/link'
+import getAQuote from '../utils/getAfreelanceQuote'
+import { MY_WORK_MAIL } from '../utils/constants'
 
 type Props = {
   showModal: boolean
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>
   title: string
   info: string
+  clientInfo: {
+    name: string
+    email: string
+    subject: string
+    message: string
+  }
 }
-export default function Modal({ showModal, setShowModal, title, info }: Props) {
+export default function Modal({
+  showModal,
+  setShowModal,
+  title,
+  info,
+  clientInfo,
+}: Props) {
+  const emailContent = getAQuote('Edwin Chebii', clientInfo.name, [
+    'Software Development',
+    'Software testing',
+    'Game Develpment',
+    'Others',
+  ])
+  // Encode email content
+  const encodedEmailContent = encodeURIComponent(emailContent)
+  // Create the mailto link
+  const mailtoLink = `mailto:${MY_WORK_MAIL}?subject=Request%20for%20Freelance%20Quote&body=${encodedEmailContent}`
+
   return showModal ? (
     <>
       <div className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none  '>
@@ -45,9 +71,14 @@ export default function Modal({ showModal, setShowModal, title, info }: Props) {
               >
                 Close
               </button>
-              <PrimaryButton type='button' onClick={() => setShowModal(false)}>
-                Get a quote
-              </PrimaryButton>
+              <Link href={mailtoLink}>
+                <PrimaryButton
+                  type='button'
+                  onClick={() => setShowModal(false)}
+                >
+                  Get a quote
+                </PrimaryButton>
+              </Link>
             </div>
           </div>
         </div>

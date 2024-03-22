@@ -10,15 +10,6 @@ const DEFAULT_TAGS = [] as string[]
 const token = process.env.SANITY_API_TOKEN
 
 /**
- * This are no longer used
- * Set up the live preview subscription hook realtime updates
- * Helper function for using the current logged in user account
- *
- */
-// export const usePreviewSubscription = createPreviewSubscriptionHook(config)
-// export const useCurrentUser = createCurrentUserHook(config)
-
-/**
  * New fetch function  for sanity ui
  */
 export async function sanityFetch<QueryResponse>({

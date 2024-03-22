@@ -7,7 +7,7 @@ name: my-portfolio-workflow
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["master"]
+    branches: ['master']
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -20,7 +20,7 @@ permissions:
 
 # Allow one concurrent deployment
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: true
 
 jobs:
@@ -50,8 +50,10 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: '16'
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+      - name: Install sharp dependency
+        run: npm i sharp
       - name: Setup Pages
         uses: actions/configure-pages@v2
         with:
@@ -75,21 +77,21 @@ jobs:
       - name: Build with Next.js also include environment variables
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
-          EMAILJS_reCAPTCHA_KEY: ${{ secrets.EMAILJS_reCAPTCHA_KEY }}
-          EMAILJS_TRACKING_ID: ${{ secrets.EMAILJS_TRACKING_ID }}
           NEXT_PUBLIC_EMAILJS_PUBLIC_KEY: ${{ secrets.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY }}
           NEXT_PUBLIC_EMAILJS_SERVICE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_SERVICE_ID }}
           NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          EMAILJS_reCAPTCHA_KEY: ${{ secrets.EMAILJS_reCAPTCHA_KEY }}
+          EMAILJS_TRACKING_ID: ${{ secrets.EMAILJS_TRACKING_ID }}
+          SANITY_API_READ_TOKEN: ${{ secrets.SANITY_API_READ_TOKEN }}
       - name: Static HTML export with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./out
-          
 
   # Deployment job
   deploy:

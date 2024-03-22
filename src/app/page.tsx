@@ -78,6 +78,7 @@ const Home = async () => {
               src={ImageSrc}
               alt='go back to top image button'
               fill
+              sizes='(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33.3vw'
               className='rounded-full object-cover'
             />
           </div>

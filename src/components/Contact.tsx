@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SectionTitle from './SectionTitle'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
@@ -11,9 +11,10 @@ import {
 } from '@heroicons/react/24/outline'
 import { PageInfo } from '../../typings'
 import Modal from './Modal'
+import { MY_NAMES, MY_WORK_MAIL } from '../utils/constants'
 
-const currentEmail = 'edwin.kibet@neurallabs.africa'
-const currentName = 'edwin chebii'
+const currentEmail = MY_WORK_MAIL
+const currentName = MY_NAMES
 // prop types
 type Props = {
   pageInfo: PageInfo
@@ -43,6 +44,7 @@ function Contact({ pageInfo }: Props) {
     register,
     handleSubmit,
     watch,
+    getValues,
     formState: { errors },
   } = useForm<Inputs>()
 
@@ -66,19 +68,40 @@ function Contact({ pageInfo }: Props) {
       )
       .then(
         (result: any) => {
-          console.log(result)
+          // console.log(result)
           if (result?.status == 200) {
             setShowModal(true)
             setIsSubmitting(false)
           }
         },
         (error: any) => {
-          setError(error?.text)
+          setError(
+            process.env.NODE_ENV == 'development'
+              ? error?.text
+              : 'Error sending mail right now, Sorry🥲. Reach out using the email above⬆️'
+          )
           setIsSubmitting(false)
         }
       )
     // send a success messaage back should be a modal thank you for contacting.I will get back to you through your email, looking forward to knowing and interacting with you
   }
+
+  // clear error
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout
+    // Reset error state after 5 seconds
+    if (error) {
+      timeoutId = setTimeout(() => {
+        setError('')
+      }, 2 * 60 * 1000) // 1 mins or 60 secs
+    }
+
+    // Cleanup function to clear timeout when component unmounts or error changes
+    return () => {
+      clearTimeout(timeoutId)
+    }
+  }, [error])
+
   return (
     <div className='relative flex flex-col text-center md:text-left xl:flex-row max-w-7xl px-10  min-h-screen w-screen justify-center mx-auto items-center'>
       <SectionTitle>contact me</SectionTitle>
@@ -171,6 +194,7 @@ function Contact({ pageInfo }: Props) {
           <Modal
             showModal={showModal}
             setShowModal={setShowModal}
+            clientInfo={getValues()}
             title={'Successful delivered'}
             info={'Thank you for your feedback!, I will get back to you soon.'}
           />
