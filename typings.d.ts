@@ -50,6 +50,12 @@ export interface Project extends SanityBody {
   title: string
   image: Image
   linkToBuild: string
+  /**
+   * @deprecated
+   * instead use
+   * @param {Project.linkToBuild} linkToBuild
+   */
+  linkTobuild: string
   summary: string
   technologies: Technology[]
 }

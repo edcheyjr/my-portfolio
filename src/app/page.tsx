@@ -22,6 +22,7 @@ const Home = async () => {
   const skills = await fetchSkills()
   const experience = await fetchExperience()
   const projects = await fetchProjects()
+  console.log('projects', projects)
   const socials = await fetchSocials()
 
   if (

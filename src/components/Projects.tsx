@@ -62,7 +62,11 @@ function Projects({ projects }: Props) {
               key={key + 1}
               className='w-full flex flex-col px-5 pt-20 md:p-20 lg:p-56 h-screen justify-center text-left space-y-5'
             >
-              <Link className='' href={project.linkToBuild || ''}>
+              <Link
+                className=''
+                href={project.linkToBuild || ''}
+                target='_blank'
+              >
                 <motion.img
                   initial={{ y: -100, opacity: 0 }}
                   transition={{ duration: 1.2 }}
@@ -79,7 +83,7 @@ function Projects({ projects }: Props) {
                 ))}
               </div>
               <div>
-                <Link href={project.linkToBuild || ''}>
+                <Link href={project.linkToBuild || ''} target='_blank'>
                   <h3 className='font-sembold text-center text-2xl lg:text-4xl mb-5'>
                     <span className='underline decoration-primary underline-offset-4'>{`Project ${
                       key + 1
