@@ -35,7 +35,7 @@ export default function Hero({ pageInfo }: Props) {
         alt={pageInfo.name || 'noImage'}
         loading='eager'
         height={128}
-        priority
+        priority={true}
         width={128}
         sizes='(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33.3vw'
       />

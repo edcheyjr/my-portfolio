@@ -38,36 +38,52 @@ const Home = async () => {
     )
   }
   return (
-    <div className='mx-auto py-4'>
-      <header id='head' className='snap-end'>
+    <div className='mx-auto py-4 snap-mandatory snap-y flex flex-col'>
+      <header id='head' className=''>
         <Header socials={socials} />
       </header>
-      <div className=''>
-        <section id='hero' className='snap-center'>
-          <Hero pageInfo={pageInfo} />
-        </section>
 
-        <section id='about' className='snap-end'>
-          <About pageInfo={pageInfo} />
-        </section>
+      <section
+        id='hero'
+        className='snap-end snap-always flex-shrink-0 h-screen'
+      >
+        <Hero pageInfo={pageInfo} />
+      </section>
 
-        <section id='experience' className='snap-center'>
-          <WorkExperience experiences={experience} />
-        </section>
+      <section
+        id='about'
+        className='snap-end snap-always flex-shrink-0 h-screen'
+      >
+        <About pageInfo={pageInfo} />
+      </section>
 
-        <section id='skills' className='snap-start'>
-          <Skills skills={skills} />
-        </section>
+      <section
+        id='experience'
+        className='snap-center snap-always flex-shrink-0 h-screen'
+      >
+        <WorkExperience experiences={experience} />
+      </section>
 
-        <section id='projects' className='snap-start'>
-          <Projects projects={projects} />
-        </section>
+      <section
+        id='skills'
+        className='snap-center snap-always flex-shrink-0 h-screen'
+      >
+        <Skills skills={skills} />
+      </section>
 
-        <section id='contact' className='snap-start'>
-          <Contact pageInfo={pageInfo} />
-        </section>
-      </div>
+      <section
+        id='projects'
+        className='snap-center snap-always flex-shrink-0 h-screen'
+      >
+        <Projects projects={projects} />
+      </section>
 
+      <section
+        id='contact'
+        className='snap-center snap-always flex-shrink-0 h-screen'
+      >
+        <Contact pageInfo={pageInfo} />
+      </section>
       <footer className='hidden lg:flex sticky z-50 bottom-5 w-full cursor-pointer justify-center'>
         <Link href={'#head'}>
           <div
