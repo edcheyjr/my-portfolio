@@ -14,8 +14,7 @@ const Technology = ({ tech }: Props) => {
         alt={tech?.title}
         title={tech?.title}
         className='object-contain'
-        width={100}
-        height={100}
+        fill
         sizes='(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33.3vw'
         src={urlFor(tech?.image).url()}
       />
