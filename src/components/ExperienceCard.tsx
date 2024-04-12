@@ -1,17 +1,40 @@
 'use client'
 
-import React from 'react'
+import React, { RefObject, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Experience } from '@types.d'
 import { urlFor } from '@lib/imageUrlResolver'
 import Technology from './Technology'
-
-type Props = {
+import { isElementFullyInView } from '../utils/testInViewElement'
+interface Props<T> {
   experience: Experience
+  parentRef: RefObject<T>
+  isScrolling?: number | boolean | string
 }
 
-const ExperienceCard = ({ experience }: Props) => {
+function ExperienceCard<T extends HTMLElement>({
+  experience,
+  parentRef,
+  isScrolling,
+}: Props<T>) {
+  // Child element ref
+  const childRef = React.useRef<HTMLElement>(null)
+  // In view state
+  const [isInView, setIsInView] = React.useState(false)
+
+  // Function that checks if childElement is Inview
+  useEffect(() => {
+    if (childRef.current && parentRef.current) {
+      setIsInView(isElementFullyInView(childRef.current, parentRef.current))
+    }
+  }, [parentRef, isScrolling])
+
   return (
+    <article
+      ref={childRef}
+      className={`max-w-screen-md flex flex-shrink-0 rounded-lg items-center space-y-7 flex-col w-full py-4 lg:py-8 bg-[#292929] ${
+        isInView ? 'opacity-100 ' : 'opacity-40 hover:opacity-100 '
+      }
     <article className=' max-w-screen-md flex flex-shrink-0 rounded-lg items-center space-y-7 flex-col w-fit py-4 lg:py-8 bg-[#292929] opacity-40 hover:opacity-100 transition-opacity cursor-pointer duraction-200 snap-center'>
       <motion.img
         initial={{ y: -100, opacity: 0 }}
