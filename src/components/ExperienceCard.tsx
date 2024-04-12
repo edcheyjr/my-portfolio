@@ -12,7 +12,7 @@ type Props = {
 
 const ExperienceCard = ({ experience }: Props) => {
   return (
-    <article className='flex flex-shrink-0 rounded-lg items-center space-y-7 flex-col w-fit py-4 lg:py-8 bg-[#292929] opacity-40 hover:opacity-100 transition-opacity cursor-pointer duraction-200 snap-center'>
+    <article className=' max-w-screen-md flex flex-shrink-0 rounded-lg items-center space-y-7 flex-col w-fit py-4 lg:py-8 bg-[#292929] opacity-40 hover:opacity-100 transition-opacity cursor-pointer duraction-200 snap-center'>
       <motion.img
         initial={{ y: -100, opacity: 0 }}
         transition={{ duration: 1.2 }}
@@ -55,7 +55,7 @@ const ExperienceCard = ({ experience }: Props) => {
         {/* roles */}
         <ul className='list-disc space-y-4 ml-5 md:text-lg px-7 h-64 overflow-x-auto scrollbar-thumb-primary scrollbar-thin'>
           {experience?.points?.map((point, key) => (
-            <li key={key} className=''>
+            <li key={key} className='text-wrap'>
               {point}
             </li>
           ))}
