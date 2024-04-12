@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 import SectionTitle from './SectionTitle'
 import { PageInfo } from '@types.d'
 import { urlFor } from '@lib/imageUrlResolver'
-import DefaultImage from '../public/image.jpg'
 
 type Props = {
   pageInfo: PageInfo | undefined
@@ -20,7 +19,6 @@ export default function About({ pageInfo }: Props) {
           x: -200,
           opacity: 0,
         }}
-        fetchPriority='high'
         alt={pageInfo?.name || 'No image'}
         src={
           pageInfo?.image

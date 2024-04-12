@@ -7,7 +7,7 @@ import { sanityClient } from './sanity.server'
 const DEFAULT_PARAMS = {} as QueryParams
 const DEFAULT_TAGS = [] as string[]
 
-const token = process.env.SANITY_API_TOKEN
+const token = process.env.SANITY_API_READ_TOKEN!
 
 /**
  * New fetch function  for sanity ui
@@ -25,7 +25,9 @@ export async function sanityFetch<QueryResponse>({
 }): Promise<QueryResponse> {
   const isDraftMode = usePreview
   if (isDraftMode && !token) {
-    throw new Error('The `SANITY_API_TOKEN` environment variable is required.')
+    throw new Error(
+      'The `SANITY_READ_API_TOKEN` environment variable is required.'
+    )
   }
 
   return sanityClient.fetch<QueryResponse>(query, params, {
