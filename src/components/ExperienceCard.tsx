@@ -32,10 +32,11 @@ function ExperienceCard<T extends HTMLElement>({
   return (
     <article
       ref={childRef}
-      className={`max-w-screen-md flex flex-shrink-0 rounded-lg items-center space-y-7 flex-col w-full py-4 lg:py-8 bg-[#292929] ${
+      className={`max-w-screen-md flex flex-shrink-0 snap-center snap-always rounded-lg items-center space-y-7 flex-col w-full py-4 lg:py-8 bg-[#292929] ${
         isInView ? 'opacity-100 ' : 'opacity-40 hover:opacity-100 '
       }
-    <article className=' max-w-screen-md flex flex-shrink-0 rounded-lg items-center space-y-7 flex-col w-fit py-4 lg:py-8 bg-[#292929] opacity-40 hover:opacity-100 transition-opacity cursor-pointer duraction-200 snap-center'>
+      transition-opacity cursor-pointer duraction-200 ease-in-out `}
+    >
       <motion.img
         initial={{ y: -100, opacity: 0 }}
         transition={{ duration: 1.2 }}

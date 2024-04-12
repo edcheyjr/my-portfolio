@@ -21,7 +21,8 @@ const WorkExperience = ({ experiences }: Props) => {
       <div
         ref={ref}
         onScroll={() => setIsScrolling((index) => index + 1)}
-      <div className='relative w-screen flex space-x-4 overflow-x-scroll scroll-smooth scrollbar-track-gray-400/20 scrollbar-thumb-primary scrollbar mt-36 pb-10 px-3 lg:px-6'>
+        className='relative w-full flex space-x-4 overflow-x-scroll scroll-smooth scrollbar-track-gray-400/20 scrollbar-thumb-primary scrollbar mt-36 pb-10 px-3 lg:px-6 scroll-x snap-mandatory'
+      >
         {/* ExperienceCard */}
 
         {experiences?.map((experience) => (
