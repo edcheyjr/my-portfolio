@@ -17,7 +17,7 @@ function Skills({ skills }: Props) {
     >
       <SectionTitle> Skills </SectionTitle>
 
-      <h3 className='text-center absolute top-36 translate-x-1/2 right-1/2 transform uppercase tracking-widest md:tracking-[3px] text-gray-500 text-xs md:text-sm'>
+      <h3 className='text-center absolute top-32 md:top-36 translate-x-1/2 right-1/2 transform uppercase tracking-widest md:tracking-[3px] text-gray-500 text-xs md:text-sm'>
         Over the years i have acquired various tech skills.{' '}
         <strong>Hover over them for current proficiency</strong>{' '}
       </h3>
