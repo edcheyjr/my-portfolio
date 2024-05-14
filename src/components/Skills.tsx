@@ -17,14 +17,11 @@ function Skills({ skills }: Props) {
     >
       <SectionTitle> Skills </SectionTitle>
 
-      <div className='absolute top-20 md:top-28 translate-x-1/2 right-1/2 transform w-full px-6 md:px-10'>
-        <h3 className='text-center  uppercase tracking-widest md:tracking-[3px] text-gray-500 text-xs md:text-sm w-full'>
-          Over the years i have acquired various tech skills.{' '}
-          <strong>Hover over them for current proficiency</strong>{' '}
-        </h3>
-      </div>
-
-      <div className='relative pt-36 grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 mx-auto my-auto'>
+      <h3 className='text-center absolute top-32 md:top-36 translate-x-1/2 right-1/2 transform uppercase tracking-widest md:tracking-[3px] text-gray-500 text-xs md:text-sm'>
+        Over the years i have acquired various tech skills.{' '}
+        <strong>Hover over them for current proficiency</strong>{' '}
+      </h3>
+      <div className='relative pt-56 md:pt-36 grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 mx-auto my-auto'>
         {skills.slice(0, skills.length * 0.5).map((skill) => (
           <Skill key={skill._id} skill={skill} directionLeft />
         ))}
