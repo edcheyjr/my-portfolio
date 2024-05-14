@@ -12,7 +12,7 @@ type Props = {
 function Skills({ skills }: Props) {
   return (
     <motion.div
-      className='flex relative flex-col text-center md:text-left xl:flex-row max-w-[2000px] px-4 xl:px-10 min-h-screen items-center justify-end
+      className='flex relative flex-col text-center md:text-left xl:flex-row max-w-[2000px] px-6 md:px-10 min-h-screen items-center justify-end
     xl:space-y-0 mx-0 '
     >
       <SectionTitle> Skills </SectionTitle>

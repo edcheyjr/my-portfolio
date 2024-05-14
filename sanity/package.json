@@ -1,7 +1,7 @@
 {
   "name": "my-portfolio",
   "private": true,
-  "version": "3.0.0",
+  "version": "3.3.1",
   "description": "To Know more about me and what i do go to this webpage **[`edchey`](https://edcheyjr.github.io/my-portfolio)**",
   "main": "package.json",
   "author": "Edwin Chebii <edcheyjr@gmail.com>",
@@ -15,13 +15,13 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/vision": "^3.35.2",
-    "eslint": "^8.57.0",
+    "@sanity/vision": "^3.40.0",
+    "eslint": "^9.0.0",
     "prop-types": "^15.8.1",
-    "react": "^18.2.0",
+    "react": "^18.3.1",
     "react-dom": "^18.2.0",
-    "sanity": "^3.35.2",
-    "styled-components": "v6.1.6"
+    "sanity": "^3.40.0",
+    "styled-components": "6.1.9"
   },
   "repository": {
     "type": "git",
