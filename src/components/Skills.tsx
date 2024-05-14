@@ -21,7 +21,7 @@ function Skills({ skills }: Props) {
         Over the years i have acquired various tech skills.{' '}
         <strong>Hover over them for current proficiency</strong>{' '}
       </h3>
-      <div className='relative pt-36 grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 mx-auto my-auto'>
+      <div className='relative pt-56 md:pt-36 grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 mx-auto my-auto'>
         {skills.slice(0, skills.length * 0.5).map((skill) => (
           <Skill key={skill._id} skill={skill} directionLeft />
         ))}
