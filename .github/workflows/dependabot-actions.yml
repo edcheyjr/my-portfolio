@@ -1,9 +1,10 @@
-#Dependabot auto merging
 name: Dependabot auto-merging
 on: pull_request_target
+
 permissions:
-      contents: write
-      pull-requests: write
+  contents: write
+  pull-requests: write
+
 jobs:
   dependabot:
     runs-on: ubuntu-latest
@@ -13,10 +14,8 @@ jobs:
         id: metadata
         uses: dependabot/fetch-metadata@v1
         with:
-            alert-lookup: true
-            compat-lookup: true
-            github-token: "${{ secrets.DEPENDABOT_TOKEN }}"
-          
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
       - name: Enable auto-merge for Dependabot PRs
         if: |
           contains(steps.metadata.outputs.dependency-names, 'my-dependency') &&
@@ -24,4 +23,4 @@ jobs:
         run: gh pr merge --auto --merge "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
-          GITHUB_TOKEN: ${{ secrets.DEPENDABOT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
